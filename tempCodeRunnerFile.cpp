@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <queue>
-#include <string.h>
+#include <string>
 using namespace std;
 
 int N;
@@ -45,9 +45,10 @@ int main() {
     
         
         for (int j = 0; j < M; j++) {
-            string num;
+            char num;
             cin >> num;
-            row.push_back(int(num.at(j)));
+            // 문자열 숫자로 변환
+            row.push_back(num - '0');
     
         }
         

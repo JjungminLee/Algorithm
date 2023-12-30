@@ -18,20 +18,21 @@ bool moveXY(int order){
     int nx = x;
     int ny = y;
     if(order==1){
-        ny +=1;
+        ny ++;
     }else if(order==2){
-        ny-=1;
+        ny --;
     }else if(order==3){
-        nx-=1;
+        nx --;
     }else{
-        nx+=1;
+        nx ++;
     }
-    if(nx>=0&&nx<N&&ny>=0&&ny<M){
+    if(nx<0||nx>=N||ny<0||ny>=M){
+        
+        return false;
+    }else{
         x = nx;
         y = ny;
-        return true;
-    }else{
-         return false;
+         return true;
     }
 
 }
@@ -89,13 +90,15 @@ int main(){
         cin>>order;
         if(!moveXY(order)){
             continue;
-        }else{
+        }
+        else{
             roll(order);
         }
 
         // arr이 0이 아니라면 
         if(arr[x][y]!=0){
             dice[1]=arr[x][y];
+            arr[x][y]=0;
 
         }else{
             arr[x][y]=dice[1];
@@ -103,5 +106,6 @@ int main(){
 
         cout<<dice[0]<<"\n";
     }
+    return 0;
 
 }

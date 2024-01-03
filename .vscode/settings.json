@@ -4,6 +4,8 @@
     "iosfwd": "cpp",
     "iostream": "cpp",
     "queue": "cpp",
-    "variant": "cpp"
+    "variant": "cpp",
+    "ios": "cpp",
+    "__locale": "cpp"
   }
 }

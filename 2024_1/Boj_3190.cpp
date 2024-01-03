@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include<utility>
+
 using namespace std;
 
 int N;
@@ -109,6 +109,7 @@ int main(){
    
     for(int i=0;i<L;i++){
         int time;
+        cin.ignore();
         char dir;
         cin>>time>>dir;
         changeDir(currentDir,dir,currentX,currentY,time);

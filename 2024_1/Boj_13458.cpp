@@ -5,7 +5,7 @@ using namespace std;
 int N;
 int B;
 int C;
-int cnt;
+long cnt;
 vector<int> v;
 int main(){
     ios::sync_with_stdio(0);

@@ -6,6 +6,8 @@
     "queue": "cpp",
     "variant": "cpp",
     "ios": "cpp",
-    "__locale": "cpp"
+    "__locale": "cpp",
+    "deque": "cpp",
+    "ostream": "cpp"
   }
 }

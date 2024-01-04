@@ -1,21 +1,23 @@
 #include <iostream>
 #include <vector>
-
+#include<deque>
 using namespace std;
 
 int N;
 int K;
-int arr[100][100];
+int arr[100][100]={};
 int L;
-int timeCount=0;
-int currentX;
-int currentY;
+int timeCount=1;
 char currentDir;
 bool flag;
+deque<pair<int,int>> dq;
+vector<pair<int,char>> timeDir;
+int moveX;
+int moveY;
 
 bool detectHit(int x, int y){
     //벽
-    if(x<0 || x>N || y<0 || y>N){
+    if(x<0 || x>=N || y<0 || y>=N){
         return false;
     }
     // 자기 몸
@@ -25,12 +27,12 @@ bool detectHit(int x, int y){
     
     return true;
 }
-void moveXY(int x , int y,int moveX,int moveY,int time){
-    for(int i=0;i<time;i++){
-        int newX=x+moveX;
+void moveXY(int x , int y,int moveX,int moveY){
+        int newX= x+moveX;
         int newY = y+moveY;
+     
         if(!detectHit(newX,newY)){
-            flag=false;
+            flag=true;
             return;
         }else{
             timeCount+=1;
@@ -38,88 +40,120 @@ void moveXY(int x , int y,int moveX,int moveY,int time){
             if(arr[newX][newY]==1){
                 //머리 부분 채우기
                 arr[newX][newY]=-1;
+                dq.push_front({newX,newY});
 
             }//사과 없었을 때
             else if(arr[newX][newY]==0){
                 arr[newX][newY]=-1;
                 //꼬리 부분 지우기
-                arr[x][y]=0;
+                int tailX = dq.back().first;
+                int tailY = dq.back().second;
+                arr[tailX][tailY]=0;
+
+                dq.push_front({newX,newY});
+                dq.pop_back();
 
             }
-            x=newX;
-            y=newY;
+           
         }
-    }
 }
-void changeDir(char currentDir,char changeDir,int x,int y,int time){
+void changeDir(char& currentDir,char changeDir,int& moveX,int& moveY){
     if(currentDir=='S'){
-       if(changeDir=='L'){
-         moveXY(x,y,0,-1,time);
-         currentDir='E';
-       }else if(changeDir=='R'){
-        moveXY(x,y,0,1,time);
-        currentDir='W';
+        if(changeDir=='L'){
+            currentDir='E';
+            moveX=0;
+            moveY=1;
+       }else if(changeDir=='D'){
+            currentDir='W';
+            moveX=0;
+            moveY=-1;
        }
+      
     }else if(currentDir=='W'){
         if(changeDir=='L'){
-         moveXY(x,y,-1,0,time);
-         currentDir='N';
-       }else if(changeDir=='R'){
-        moveXY(x,y,1,0,time);
-        currentDir='S';
+            currentDir='S';
+            moveX=1;
+            moveY=0;
+       }else if(changeDir=='D'){
+            currentDir='N';
+            moveX=-1;
+            moveY=0;
        }
-
+ 
     }else if(currentDir=='N'){
-         if(changeDir=='L'){
-         moveXY(x,y,0,1,time);
-         currentDir='W';
-       }else if(changeDir=='R'){
-        moveXY(x,y,0,-1,time);
-        currentDir='E';
+        if(changeDir=='L'){
+            currentDir='W';
+            moveX=0;
+            moveY=-1;
+       }else if(changeDir=='D'){
+            currentDir='E';
+            moveX=0;
+            moveY=1;
        }
 
     }else if(currentDir=='E'){
-         if(changeDir=='L'){
-         moveXY(x,y,1,0,time);
-         currentDir='N';
-       }else if(changeDir=='R'){
-        moveXY(x,y,-1,0,time);
-        currentDir='S';
+        if(changeDir=='L'){
+            currentDir='N';
+            moveX=-1;
+            moveY=0;
+        }else if(changeDir=='D'){
+            currentDir='S';
+            moveX=1;
+            moveY=0;
        }
-
+  
     }
 }
 int main(){
     ios::sync_with_stdio(0);
     cin>>N;
     cin>>K;
+    dq={};
+    dq.push_back({0,0});
     // 사과는 1 자기 몸은 -1
-    for(int i=0;i<N;i++){
-        for(int j=0;j<N;j++){
-            int x,y;
-            cin>>x>>y;
-            arr[x-1][y-1]=1;
-        }
-    }
+   for(int i=0;i<K;i++){
+    int x,y;
+    cin>>x>>y;
+    arr[x-1][y-1]=1;
+   }
     cin>>L;
-    currentX=0;
-    currentY=0;
-    currentDir='S';
+    currentDir='E';
+    moveX = 0;
+    moveY = 1;
     flag=false;
    
     for(int i=0;i<L;i++){
         int time;
-        cin.ignore();
         char dir;
         cin>>time>>dir;
-        changeDir(currentDir,dir,currentX,currentY,time);
+        timeDir.push_back({time,dir});
+    }
+
+    while(true){
+  
         if(flag){
             break;
         }
+        
+        int curX = dq.front().first;
+        int curY = dq.front().second;
 
+        moveXY(curX,curY,moveX,moveY);
+        for(int i=0;i<timeDir.size();i++){
+            if(timeDir[i].first==timeCount-1){
+                changeDir(currentDir,timeDir[i].second,moveX,moveY);
+            }
+        }
+       
+        
+        if(flag){
+            break;
+        }
+        
+        
     }
-    cout<<timeCount;
-   
+    cout<<timeCount<<endl;
+
 
     return 0;
 }

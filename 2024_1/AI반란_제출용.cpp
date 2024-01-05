@@ -15,18 +15,12 @@ struct Node {
 
 int T;
 vector<long> vAns;
-bool canInsertCapArr(int N, int* cap, int idx) {
-
+bool canInsertCapArr(int N, long* cap, int idx) {
     cap[idx-1]+=1;
      
-    // cout<<"현재 capArr"<<endl;
-    //  for(int i=0;i<3;i++){
-    //     cout<<cap[i]<<" ";
-    //  }
-    // cout<<endl;
 
-    int zeroIdxCnt = 0; //능력 안채워진 idx
-    int nonZeroIdxCnt = 0;
+    long zeroIdxCnt = 0; //능력 안채워진 idx
+    long nonZeroIdxCnt = 0;
     for(int i=0;i<3;i++){
         if(cap[i]==0){
             zeroIdxCnt+=1;
@@ -34,10 +28,11 @@ bool canInsertCapArr(int N, int* cap, int idx) {
             nonZeroIdxCnt+=cap[i];
         }
     }
-    // cout<<"zero"<<zeroIdxCnt<<" Non zero"<<nonZeroIdxCnt<<endl;
-    // cout<<"나눗셈 "<<(N-nonZeroIdxCnt)/zeroIdxCnt<<endl;
+
+    if(zeroIdxCnt==0){
+        return true;
+    }
     if((N-nonZeroIdxCnt)/zeroIdxCnt>=1){
-        // cout<<"넣을수 있다!"<<idx<<endl;
          
         return true;
     }
@@ -47,7 +42,7 @@ bool canInsertCapArr(int N, int* cap, int idx) {
     }
 }
 
-long selectCapability(int N, Node& node, int* cap) {
+long selectCapability(int N, Node& node, long* cap) {
     long a = node.a;
     long b = node.b;
     long c = node.c;
@@ -62,9 +57,7 @@ long selectCapability(int N, Node& node, int* cap) {
     for (int i = 0; i < 3; i++) {
         
         if (canInsertCapArr(N,cap, capVector[i].first)) {
-            // cout<<"i번째 순회"<<i<<endl;
             target = i;
-            // cout<<"빼야하는 능력치"<<capVector[i].second<<endl;
             break;
         }
     }
@@ -78,16 +71,21 @@ int main() {
     
 
     for (int i = 0; i < T; i++) {
-        // cout<<"i"<<i<<endl;
+
         int N;
         cin >> N;
-        // cout<<"N "<<N<<endl;
+
+
     
         if (N <= 2) {
+            for(int j=0;j<N;j++){
+                int a,b,c;
+                cin>>a>>b>>c;
+            }
             vAns.push_back(-1);
         } else {
            
-            int cap[] = {0,0,0};
+            long cap[] = {0,0,0};
             vector<Node> v;
             long long minCnt = 0;
 
@@ -110,15 +108,13 @@ int main() {
                 
                 minCnt -= capNum;
             }
-            //cout<<"minCnt현황"<<minCnt<<endl;
-
             vAns.push_back(minCnt);
         }
     }
 
 
     for(int i=0;i<vAns.size();i++){
-        cout<<vAns[i]<<endl;
+        cout<<"#"<<i+1<<" "<<vAns[i]<<endl;
     }
 
     return 0;

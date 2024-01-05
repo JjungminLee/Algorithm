@@ -17,13 +17,14 @@ int T;
 vector<long> vAns;
 bool canInsertCapArr(int N, int* cap, int idx) {
 
+    cout<<"현재 capArr"<<endl;
+     for(int i=0;i<3;i++){
+        cout<<cap[i]<<" ";
+     }
+    cout<<endl;
+
     cap[idx-1]+=1;
      
-    // cout<<"현재 capArr"<<endl;
-    //  for(int i=0;i<3;i++){
-    //     cout<<cap[i]<<" ";
-    //  }
-    // cout<<endl;
 
     int zeroIdxCnt = 0; //능력 안채워진 idx
     int nonZeroIdxCnt = 0;
@@ -34,8 +35,11 @@ bool canInsertCapArr(int N, int* cap, int idx) {
             nonZeroIdxCnt+=cap[i];
         }
     }
-    // cout<<"zero"<<zeroIdxCnt<<" Non zero"<<nonZeroIdxCnt<<endl;
-    // cout<<"나눗셈 "<<(N-nonZeroIdxCnt)/zeroIdxCnt<<endl;
+    cout<<"zero"<<zeroIdxCnt<<" Non zero"<<nonZeroIdxCnt<<endl;
+    //cout<<"나눗셈 "<<(N-nonZeroIdxCnt)/zeroIdxCnt<<endl;
+    if(zeroIdxCnt==0){
+        return true;
+    }
     if((N-nonZeroIdxCnt)/zeroIdxCnt>=1){
         // cout<<"넣을수 있다!"<<idx<<endl;
          
@@ -62,9 +66,9 @@ long selectCapability(int N, Node& node, int* cap) {
     for (int i = 0; i < 3; i++) {
         
         if (canInsertCapArr(N,cap, capVector[i].first)) {
-            // cout<<"i번째 순회"<<i<<endl;
+            cout<<"i번째 순회"<<capVector[i].first<<endl;
             target = i;
-            // cout<<"빼야하는 능력치"<<capVector[i].second<<endl;
+            cout<<"빼야하는 능력치"<<capVector[i].second<<endl;
             break;
         }
     }
@@ -110,8 +114,6 @@ int main() {
                 
                 minCnt -= capNum;
             }
-            //cout<<"minCnt현황"<<minCnt<<endl;
-
             vAns.push_back(minCnt);
         }
     }

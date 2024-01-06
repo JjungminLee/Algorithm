@@ -9,8 +9,9 @@ struct Node {
     long b;
     long c;
     long sum;
+    long maxNum;
 
-    Node(long a, long b, long c, long sum) : a(a), b(b), c(c), sum(sum) {}
+    Node(long a, long b, long c, long sum,long maxNum) : a(a), b(b), c(c), sum(sum),maxNum(maxNum) {}
 };
 
 int T;
@@ -51,6 +52,9 @@ long selectCapability(int N, Node& node, long* cap) {
     capVector.push_back({2, b});
     capVector.push_back({3, c});
     sort(capVector.begin(), capVector.end(), [](const pair<int, long>& lhs, const pair<int, long>& rhs) {
+        if(lhs.second==rhs.second){
+            return lhs.first<rhs.first;
+        }
         return lhs.second > rhs.second;
     });
     int target=0;
@@ -61,7 +65,7 @@ long selectCapability(int N, Node& node, long* cap) {
             break;
         }
     }
-    // cout<<"target"<<target<<endl;
+    //cout<<"target"<<capVector[target].second<<endl;
     return capVector[target].second;
 }
 
@@ -94,13 +98,18 @@ int main() {
                 long a, b, c;
                 cin >> a >> b >> c;
                 long sum = a + b + c;
+                long maxNum = max(a,max(b,c));
+
                 minCnt += sum;
-                v.push_back(Node(a, b, c, sum));
+                v.push_back(Node(a, b, c, sum,maxNum));
             }
             
 
             sort(v.begin(), v.end(), [](const Node& lhs, const Node& rhs) {
-                return lhs.sum > rhs.sum;
+                if(lhs.maxNum==rhs.maxNum){
+                    return lhs.sum>rhs.sum;
+                }
+                return lhs.maxNum > rhs.maxNum;
             });
 
             for (int j = 0; j < N; j++) {

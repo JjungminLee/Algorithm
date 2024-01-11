@@ -66,11 +66,7 @@ int main(){
                 int maxIdx = max(startIdx,endIdx);
                 int startNum = min(s,e);
                 int endNum = max(s,e);
-                // cout<<"minIdx"<<minIdx<<endl;
-                // cout<<"maxIdx"<<maxIdx<<endl;
-                // cout<<startNum<<endNum<<endl;
-                // cout<<v[maxIdx]<<endl;
-               
+            
                 // 왼쪽 끝에서 오른쪽 끝으로 가는 경우
                 if(startNum==v[minIdx-1]&&endNum==v[maxIdx]-1){
                    if(maxIdx-minIdx==1){

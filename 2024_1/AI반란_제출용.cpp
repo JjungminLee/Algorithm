@@ -1,130 +1,90 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-
+#include<iostream>
+#include<algorithm>
 using namespace std;
-
-struct Node {
-    long a;
-    long b;
-    long c;
-    long sum;
-    long maxNum;
-
-    Node(long a, long b, long c, long sum,long maxNum) : a(a), b(b), c(c), sum(sum),maxNum(maxNum) {}
-};
-
+int dp[51][51][51]; // 횟수 힘 지 
+int MAX = 10000000;
 int T;
-vector<long> vAns;
-bool canInsertCapArr(int N, long* cap, int idx) {
-    cap[idx-1]+=1;
-     
 
-    long zeroIdxCnt = 0; //능력 안채워진 idx
-    long nonZeroIdxCnt = 0;
-    for(int i=0;i<3;i++){
-        if(cap[i]==0){
-            zeroIdxCnt+=1;
-        }else if(cap[i]!=0){
-            nonZeroIdxCnt+=cap[i];
-        }
-    }
-
-    if(zeroIdxCnt==0){
-        return true;
-    }
-    if((N-nonZeroIdxCnt)/zeroIdxCnt>=1){
-         
-        return true;
-    }
-    else{
-        cap[idx-1]-=1;
-        return false;
-    }
-}
-
-long selectCapability(int N, Node& node, long* cap) {
-    long a = node.a;
-    long b = node.b;
-    long c = node.c;
-    vector<pair<int, long>> capVector;
-    capVector.push_back({1, a});
-    capVector.push_back({2, b});
-    capVector.push_back({3, c});
-    sort(capVector.begin(), capVector.end(), [](const pair<int, long>& lhs, const pair<int, long>& rhs) {
-        if(lhs.second==rhs.second){
-            return lhs.first<rhs.first;
-        }
-        return lhs.second > rhs.second;
-    });
-    int target=0;
-    for (int i = 0; i < 3; i++) {
-        
-        if (canInsertCapArr(N,cap, capVector[i].first)) {
-            target = i;
-            break;
-        }
-    }
-    //cout<<"target"<<capVector[target].second<<endl;
-    return capVector[target].second;
-}
-
-int main() {
-    ios::sync_with_stdio(0);
-    cin >> T;
-    
-
-    for (int i = 0; i < T; i++) {
-
-        int N;
-        cin >> N;
-
-
-    
-        if (N <= 2) {
-            for(int j=0;j<N;j++){
-                int a,b,c;
-                cin>>a>>b>>c;
+void init(){
+      for(int i=1;i<51;i++){
+        for(int j=0;j<51;j++){
+            for(int k=0;k<51;k++){
+                dp[i][j][k]=MAX;
             }
-            vAns.push_back(-1);
-        } else {
+        }
+    }
+
+}
+int main(){
+    ios::sync_with_stdio(0);
+    cin>>T;
+  
+    for(int i=0;i<T;i++){
+        int N;
+        cin>>N;
+        init();
+         int res = MAX;
+        for(int j=1;j<=N;j++){
+            int a,b,c;
+            cin>>a>>b>>c;
            
-            long cap[] = {0,0,0};
-            vector<Node> v;
-            long long minCnt = 0;
+            
+            if(j==1){
+                dp[1][1][0]=b+c;
+                dp[1][0][1]=a+c;
+                dp[1][0][0]=a+b;
+            }else{
+                for(int k=0;k<=N;k++){
+                    for(int m=0;m<=N;m++){
+                        if(k+m>N&&N-(k+m)>N){
+                            break;
+                        }
+                      
+                        if(k!=0){
+                            dp[j][k][m] = min(dp[j][k][m],dp[j-1][k-1][m]+b+c);
 
-            v.clear(); // 벡터 초기화
-            for (int j = 0; j < N; j++) {
-                long a, b, c;
-                cin >> a >> b >> c;
-                long sum = a + b + c;
-                long maxNum = max(a,max(b,c));
+                        }
+                        if(m!=0){
+                            dp[j][k][m] = min(dp[j][k][m],dp[j-1][k][m-1]+a+c);
+                        }
+                        if(N-k-m!=0){
+                            dp[j][k][m] =min(dp[j][k][m],dp[j-1][k][m]+a+b);
+                        }
+                    }
 
-                minCnt += sum;
-                v.push_back(Node(a, b, c, sum,maxNum));
+                }
+
+         
+
+        
+               
             }
             
-
-            sort(v.begin(), v.end(), [](const Node& lhs, const Node& rhs) {
-                if(lhs.maxNum==rhs.maxNum){
-                    return lhs.sum>rhs.sum;
-                }
-                return lhs.maxNum > rhs.maxNum;
-            });
-
-            for (int j = 0; j < N; j++) {
-                long capNum = selectCapability(N,v[j], cap);
-                
-                minCnt -= capNum;
-            }
-            vAns.push_back(minCnt);
         }
+        for(int j=1;j<=N;j++){
+            for(int k=1;k<N;k++){
+                for(int m=1;m<N;m++){
+                        
+                    if(N-(k+m)!=0 && k+m<N&&N-(k+m)<N){
+                                cout<<k<<" "<<m<<" "<<N-k-m<<endl;
+                                cout<<dp[j][k][m]<<endl;
+                        res = min(MAX,dp[j][k][m]);
+                    }
+
+                }
+
+            }
+        }
+
+         cout<<"#"<<i+1<<" "<<res<<endl;
+
+        
+        
+      
+
+        
     }
 
+    
 
-    for(int i=0;i<vAns.size();i++){
-        cout<<"#"<<i+1<<" "<<vAns[i]<<endl;
-    }
-
-    return 0;
 }

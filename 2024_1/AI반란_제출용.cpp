@@ -36,7 +36,7 @@ int main(){
             }else{
                 for(int k=0;k<=N;k++){
                     for(int m=0;m<=N;m++){
-                        if(k+m>N&&N-(k+m)>N){
+                        if(k+m>N&&N-(k+m)>N&&N-(k+m)<0){
                             break;
                         }
                       
@@ -50,6 +50,9 @@ int main(){
                         if(N-k-m!=0){
                             dp[j][k][m] =min(dp[j][k][m],dp[j-1][k][m]+a+b);
                         }
+
+                        cout<<j<<" "<<k<<" "<<m<<" "<<N-k-m<<" "<<endl;
+                        cout<<dp[j][k][m]<<endl;
                     }
 
                 }
@@ -61,16 +64,14 @@ int main(){
             }
             
         }
-        for(int j=1;j<=N;j++){
-            for(int k=1;k<N;k++){
-                for(int m=1;m<N;m++){
-                        
-                    if(N-(k+m)!=0 && k+m<N&&N-(k+m)<N){
-                                cout<<k<<" "<<m<<" "<<N-k-m<<endl;
-                                cout<<dp[j][k][m]<<endl;
-                        res = min(MAX,dp[j][k][m]);
-                    }
 
+        for(int j=1;j<N;j++){
+            for(int k=1;k<N;k++){
+                
+                if(j+k<N){
+                    res=min(res,dp[N][j][k]);
+                    cout<<j<<k<<N-j-k<<endl;
+                    cout<<res<<endl;
                 }
 
             }

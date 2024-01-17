@@ -1,17 +1,18 @@
 #include <string>
 #include <vector>
 #include<iostream>
-
+#include <cmath>
 
 using namespace std;
-vector<int> v;
+vector<long long> v;
 
-bool isPrime(int x){
-    for(int i=2;i<=x;i++){
-        if(x%i==0){
-            return false;
-        }
+bool isPrime(long long n) {
+    if(n < 2) return false;
+        
+    for(int i=2; i<=sqrt(n); ++i) {
+        if(n % i == 0) return false;
     }
+    
     return true;
 }
 
@@ -26,28 +27,36 @@ int solution(int n, int k) {
         n = quotient;
     }
     v.insert(v.begin(),n%k);
-    for(int i=0;i<v.size();i++){
-        cout<<v[i]<<" ";
-    }
+
+ 
     if(v.size()==1&&v[0]!=0){
         answer+=1;
     }else{
-        // int idx = 0;
-        // while(idx<v.size()){
-        //     string str = "";
-        //     while(v[idx]!=0){
-        //         str+=to_string(v[idx]);
-        //         idx+=1;
-        //         cout<<idx<<endl;
+        int startIdx = 0;
+        int endIdx = 0;
+        string str = "";
+        while(endIdx<v.size()+1){
+            if(v[endIdx]!=0){
+                //cout<<endIdx<<endl;
+                str+=to_string(v[endIdx]);
+                endIdx+=1;
+               
+            }else{
+                if(str!=""){
+                    //cout<<str<<endl;
+                    if(isPrime(stol(str))){
+                        answer+=1;
+                    }
 
-        //     }
-        //     cout<<str<<endl;
-        // }
-   
+                }
+                str="";
+                startIdx=endIdx;
+                endIdx=startIdx+1;
+            
+            }
+        }
 
     }
+
     return answer;
-}
-int main(){
-    cout<<solution(437674,3)<<endl;
 }

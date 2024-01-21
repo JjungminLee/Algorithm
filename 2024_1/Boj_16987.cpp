@@ -4,7 +4,6 @@ int N;
 vector<pair<int,int>> v;
 bool breakEgg[9];
 int ans = 0;
-
 void dfs(int pos){
     if(pos==N){
         int cnt =0 ;

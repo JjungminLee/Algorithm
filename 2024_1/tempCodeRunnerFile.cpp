@@ -1,4 +1,4 @@
-   // if(j-1>=0&&j+1<M&&i-1>=0&&j-1<M&&j+1>=0&&i-1<N){
-            //     shape2(i,j);
-
-            // }
+    cout<<"nx"<<nx<<"ny "<<ny<<endl;
+                        cout<<"x "<<x<<"y "<<y<<endl;
+                        ans = min(ans,abs(x-nx)+abs(y-ny)-1);
+                        cout<<"ans: "<<ans<<endl;

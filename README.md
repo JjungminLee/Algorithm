@@ -1,5 +1,7 @@
 ## ✅ 1일 1알고리즘 표
 
+![](https://api.mosu.blog/OneDay-OneAlgorithm/JjungminCpp?since=2024-01-01)
+
 ### ❄️ 2024년 1월
 
 | 날짜 | 푼 문제                   | 문제 풀이 여부 |

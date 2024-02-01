@@ -1,6 +1,6 @@
 ## ✅ 1일 1알고리즘 표
 
-![](https://api.mosu.blog/OneDay-OneAlgorithm/JjungminCpp?since=2024-01-01)
+![](https://api.mosu.blog/OneDay-OneAlgorithm/JjungminCpp?since=2023-12-18)
 
 ### ❄️ 2024년 1월
 
@@ -42,7 +42,7 @@
 
 | 날짜 | 푼 문제 | 문제 풀이 여부 |
 | ---- | ------- | -------------- |
-| 2/1  |         |                |
+| 2/1  | 수 묶기 | C++            |
 | 2/2  |         |                |
 | 2/3  |         |                |
 | 2/4  |         |                |

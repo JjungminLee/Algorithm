@@ -16,7 +16,8 @@ void check(int x,int y,int dir){
         // 해당 방향으로 조건 만족하기 전까지 쭉 이동
         int nx = x+dirX[dir];
         int ny = y+dirY[dir];
-        cout<<nx<<" "<<ny<<" "<<arr[nx][ny]<<endl;
+        x=nx;
+        y=ny;
         if(nx<0||nx>=N||ny<0||ny>=M){
             //범위 넘어감
             return;
@@ -34,16 +35,10 @@ void check(int x,int y,int dir){
 }
 
 void dfs(int idx){
-   
+
+    // 백트래킹
     if(idx==cnt){
         int res=0;
-        for(int i=0;i<N;i++){
-            for(int j=0;j<M;j++){
-                cout<<arr[i][j]<<" ";
-            }
-            cout<<endl;
-        }
-        
         for(int i=0;i<N;i++){
             for(int j=0;j<M;j++){
                 if(arr[i][j]==0){
@@ -52,7 +47,6 @@ void dfs(int idx){
             }
         }
         ans=min(ans,res);
-        cout<<"ans: "<<ans<<endl;
         return;
     }
     // 상하좌우 회전을 갈긴다

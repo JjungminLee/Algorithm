@@ -1,6 +1,6 @@
 ## ✅ 1일 1알고리즘 표
 
-![](https://api.mosu.blog/OneDay-OneAlgorithm/JjungminCpp?since=2023-12-18)
+![](https://api.mosu.blog/OneDay-OneAlgorithm/JjungminCpp?since=2023-12-27)
 
 ### ❄️ 2024년 1월
 
@@ -47,7 +47,7 @@
 | 2/3  | 톱니바퀴         | C++            |
 | 2/4  | 감시             | C++            |
 | 2/5  | 미세먼지 안녕!   | C++            |
-| 2/6  |                  |                |
+| 2/6  | 드래곤 커브      | C++            |
 | 2/7  |                  |                |
 | 2/8  |                  |                |
 | 2/9  |                  |                |

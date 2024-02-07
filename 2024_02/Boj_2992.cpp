@@ -8,6 +8,7 @@ int cnt;
 int ans =INT_MAX;
 int arr[10];
 bool visits[7];
+int MAX = 2147483647;
 
 void dfs(int depth){
     if(depth==cnt){
@@ -42,5 +43,9 @@ int main(){
     sort(v.begin(),v.end());
     cnt= v.size();
     dfs(0);
-    cout<<ans<<endl;
+    if(ans==MAX){
+        cout<<0<<endl;
+    }else{
+        cout<<ans<<endl;
+    }
 }

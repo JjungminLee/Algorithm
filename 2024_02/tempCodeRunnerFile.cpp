@@ -1,9 +1,14 @@
-cout<<"ans: "<<ans<<endl;
-        cout<<"rowCnt: "<<rowCnt<<"colCnt: "<<colCnt<<endl;
-        for(int i=1;i<=rowCnt;i++){
-            for(int j=1;j<=colCnt;j++){
-                cout<<arr[i][j]<<" ";
-            }
-            cout<<endl;
+struct Fish
+{
+    int y, x, dist;
+    bool operator<(const Fish &b) const
+    {
+        if (dist == b.dist)
+        {
+            if (y == b.y)
+                return x > b.x;
+            return y > b.y;
         }
-        cout<<endl;
+        return dist > b.dist;
+    }
+};

@@ -18,7 +18,7 @@ int main(){
 
         pq.pop();
         int num2=pq.top();
- 
+
         pq.pop();
         int cnt=num1+num2;
         ans+=cnt;

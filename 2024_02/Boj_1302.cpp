@@ -6,10 +6,12 @@ map<string, int> m;
 vector<pair<string,int>>v;
 
 bool compare(pair<string,int> a, pair<string,int> b){
-    if(a.second>b.second){
-        return true;
+    if(a.second==b.second){
+        return a.first<b.first;
+        
     }
-    return false;
+    
+    return a.second>b.second;
 
 }
 int main(){

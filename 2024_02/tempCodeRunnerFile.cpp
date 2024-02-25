@@ -1,46 +1,101 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-int N;
-map<string, int> m;
-vector<pair<string,int>>v;
+int N,M;
+int truth;
+vector<int> truthV;
+int arr[51][51];
+int parent[51];
 
-bool compare(pair<string,int> a, pair<string,int> b){
-    if(a.second>b.second){
-        return true;
+
+
+int finds(int a){
+    if(parent[a]==a){
+        return a;
     }
-    return false;
+    int num = finds(parent[a]);
+    return num;
 
 }
-int main(){
-    cin>>N;
-    for(int i=0;i<N;i++){
-        string str;
-        cin>>str;
+void unions(int a,int b){
 
-        if (m.find(str) == m.end()) {
-	        m.insert({str,1});
-        }
-        else{
-            for (auto iter = m.begin() ; iter !=  m.end(); iter++)
-            {
-                if(iter->first==str){
-                    iter->second+=1;
+        int aP=finds(a);
+        int bP=finds(b);
 
-                }
-            
+        bool aFlag=false;
+        for(int i=0;i<truthV.size();i++){
+            if(truthV[i]==a){
+                aFlag=true;
             }
+        }
+        bool bFlag=false;
+        for(int i=0;i<truthV.size();i++){
+            if(truthV[i]==b){
+                bFlag=true;
+            }
+        }
+ 
+        if(aFlag&&!bFlag){
+            parent[b]=aP;
+        }
+        else if(!aFlag&&bFlag){
+            parent[a]=bP;
+        }
+        else if(!aFlag&&!bFlag){
+            if(aP<bP){
+                parent[bP]=aP;
+            }else{
+                parent[aP]=bP;
+            }
+        }
+       
+}
+int main(){
+    cin>>N>>M;
+    cin>>truth;
+    for(int i=0;i<truth;i++){
+        int num;
+        cin>>num;
+        truthV.push_back(num);
+    }
+    for(int i=0;i<51;i++){
+        parent[i]=i;
+    }
+    for(int i=0;i<M;i++){
+        int n;
+        cin>>n;
+        arr[i][0]=n;
+        for(int j=1;j<=n;j++){
+            cin>>arr[i][j];
+        }
+        for(int j=1;j<n;j++){
+            for(int k=j+1;k<=n;k++){
+                unions(arr[i][j],arr[i][k]);
+            }
+        }
+        
 
+    }
+    int ans=0;
+    for(int i=0;i<M;i++){
+        int num = arr[i][0];
+        bool flag=false;
+        for(int j=1;j<=num;j++){
+            int target = parent[arr[i][j]];
+            
+            for(int k=0;k<truthV.size();k++){
+                if(truthV[k]==target){
+                    flag=true;
+                }
+            }
+            
+        }
+        if(!flag){
+                ans++;
         }
 
     }
-    
-    for (auto iter = m.begin() ; iter !=  m.end(); iter++)
-    { 
-        v.push_back({iter->first,iter->second});
-    }
-    sort(v.begin(),v.end(),compare);
-    cout<<v[0].first<<endl;
-
+  
+    cout<<ans<<endl;
 
 }

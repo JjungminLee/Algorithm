@@ -22,6 +22,7 @@ void bfs(int n, int m)
         {
             int nx = x + dx[i];
             int ny = y + dy[i];
+
             if (nx >= 0 && nx < n && ny >= 0 && ny < m)
             {
                 if (!visited[nx][ny])
@@ -46,7 +47,6 @@ int main()
     int n, m;
     cin >> n;
     cin >> m;
-
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
@@ -66,30 +66,27 @@ int main()
         }
     }
     v.push_back(temp);
-
-    while (true)
+    while (1)
     {
-        int count = 0;
+        int temp = 0;
         for (int i = 0; i < n; i++)
         {
             for (int j = 0; j < m; j++)
             {
                 if (arr[i][j] == 1)
                 {
-                    count++;
+                    temp++;
                 }
             }
         }
-        if (count == 0)
+        if (temp == 0)
         {
             break;
         }
-        // visited 배열 초기화
         memset(visited, false, sizeof(visited));
         bfs(n, m);
-
         times++;
-        int temp = 0;
+        temp = 0;
         for (int i = 0; i < n; i++)
         {
             for (int j = 0; j < m; j++)
@@ -102,7 +99,6 @@ int main()
         }
         v.push_back(temp);
     }
-
     cout << times << endl;
     cout << v[times - 1] << endl;
 

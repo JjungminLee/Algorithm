@@ -1,4 +1,1 @@
-if (flag == 1)
-                    {
-                        arr[i][j] = 0;
-                    }
+ cout << "nx " << nx << "ny " << ny << endl;

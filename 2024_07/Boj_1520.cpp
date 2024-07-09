@@ -18,7 +18,6 @@ int dfs(int x, int y)
     {
         return 1;
     }
-    // 이미 방문한거
     if (dp[x][y] != -1)
     {
         return dp[x][y];
@@ -30,7 +29,6 @@ int dfs(int x, int y)
         int ny = y + dy[i];
         if (nx >= 0 && nx < m && ny >= 0 && ny < n)
         {
-
             if (arr[nx][ny] < arr[x][y])
             {
                 dp[x][y] += dfs(nx, ny);
@@ -39,6 +37,7 @@ int dfs(int x, int y)
     }
     return dp[x][y];
 }
+
 int main()
 {
     cin >> m;
@@ -51,6 +50,5 @@ int main()
         }
     }
     memset(dp, -1, sizeof(dp));
-
     cout << dfs(0, 0) << endl;
 }

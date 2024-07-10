@@ -1,18 +1,18 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int arr[110][110];
-bool visited[110][110];
-int times = 0;
+int arr[101][101];
+int visited[101][101];
 vector<int> v;
+int dx[4] = {-1, 1, 0, 0};
+int dy[4] = {0, 0, -1, 1};
+int n, m;
 
-void bfs(int n, int m)
+void bfs(int x, int y)
 {
-    int dx[4] = {-1, 1, 0, 0};
-    int dy[4] = {0, 0, -1, 1};
     queue<pair<int, int>> q;
-    q.push({0, 0});
-    visited[0][0] = true;
+    visited[x][y] = true;
+    q.push({x, y});
     while (!q.empty())
     {
         int x = q.front().first;
@@ -22,7 +22,6 @@ void bfs(int n, int m)
         {
             int nx = x + dx[i];
             int ny = y + dy[i];
-
             if (nx >= 0 && nx < n && ny >= 0 && ny < m)
             {
                 if (!visited[nx][ny])
@@ -41,10 +40,9 @@ void bfs(int n, int m)
         }
     }
 }
-
 int main()
 {
-    int n, m;
+
     cin >> n;
     cin >> m;
     for (int i = 0; i < n; i++)
@@ -54,53 +52,33 @@ int main()
             cin >> arr[i][j];
         }
     }
-    int temp = 0;
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < m; j++)
-        {
-            if (arr[i][j] == 1)
-            {
-                temp++;
-            }
-        }
-    }
-    v.push_back(temp);
+
     while (1)
     {
-        int temp = 0;
+        int cnt = 0;
         for (int i = 0; i < n; i++)
         {
             for (int j = 0; j < m; j++)
             {
                 if (arr[i][j] == 1)
                 {
-                    temp++;
+                    cnt++;
                 }
             }
         }
-        if (temp == 0)
+
+        if (cnt == 0)
         {
             break;
         }
-        memset(visited, false, sizeof(visited));
-        bfs(n, m);
-        times++;
-        temp = 0;
-        for (int i = 0; i < n; i++)
+        else
         {
-            for (int j = 0; j < m; j++)
-            {
-                if (arr[i][j] == 1)
-                {
-                    temp++;
-                }
-            }
-        }
-        v.push_back(temp);
-    }
-    cout << times << endl;
-    cout << v[times - 1] << endl;
+            memset(visited, 0, sizeof(visited));
+            bfs(0, 0);
 
-    return 0;
+            v.push_back(cnt);
+        }
+    }
+    cout << v.size() << endl;
+    cout << v[v.size() - 1] << endl;
 }

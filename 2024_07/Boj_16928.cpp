@@ -7,7 +7,7 @@ int visited[101];
 
 void bfs()
 {
-    queue<pair<int, int>> q; // 현 위치, count
+    queue<pair<int, int>> q;
     q.push({1, 0});
     while (!q.empty())
     {
@@ -24,7 +24,6 @@ void bfs()
             }
             else if (nx < 100)
             {
-
                 if (maps[nx] != 0)
                 {
                     nx = maps[nx];
@@ -38,7 +37,6 @@ void bfs()
         }
     }
 }
-
 int main()
 {
     cin >> n;

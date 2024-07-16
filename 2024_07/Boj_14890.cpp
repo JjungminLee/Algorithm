@@ -1,60 +1,55 @@
-#include <iostream>
-#include <cmath>
+#include <bits/stdc++.h>
 using namespace std;
-int road1[101][101];
-int road2[101][101];
-int n, l;
-int result = 0;
-void PassCnt(int road[][101])
+int n;
+int l;
+int rowArr[101][101];
+int colArr[101][101];
+int ans = 0;
+
+void computation(int arr[101][101])
 {
-    // 가로 확인
     for (int i = 0; i < n; i++)
     {
-        bool slope[101] = {0}; // 경사로 여부
-        bool possible = true;  // 가능한 길인지 확인
-        for (int h = 0; h < n - 1; h++)
+        int possible = 1;
+        int visited[101] = {
+            0,
+        };
+        for (int j = 0; j < n - 1; j++)
         {
-            if (abs(road[i][h] - road[i][h + 1]) > 1)
+
+            if (abs(arr[i][j] - arr[i][j + 1]) > 1)
             {
-                // 1. 높이차가 1보다 크면 불가능한 길
-                possible = false;
+                possible = 0;
                 break;
             }
-
-            // 2. 경사로를 위에서 아래로 설치 할 때
-            if (road[i][h] == road[i][h + 1] + 1)
+            // 위 ->아래  arr[i][j + 1] 여기가 경사로를 놓는 지점이 됨
+            if (arr[i][j] == arr[i][j + 1] + 1)
             {
-                int cur_hight = road[i][h + 1];
-                for (int k = h + 2; k < h + 1 + l; k++)
+                for (int k = j + 2; k < j + l + 1; k++)
                 {
-                    if (k >= n || road[i][k] != cur_hight)
+                    if (k >= n || arr[i][k] != arr[i][j + 1])
                     {
-                        // L만큼의 여유가 있는지 확인
-                        possible = false;
+                        possible = 0;
                         break;
                     }
                 }
                 if (possible)
                 {
-                    // 경사로 설치하면 설치했다고 표시
-                    slope[h + l] = true;
+                    visited[j + l] = true;
                 }
                 else
                 {
                     break;
                 }
             }
-
-            // 3. 경사로를 아래에서 위로 설치 할 때
-            if (road[i][h] == road[i][h + 1] - 1)
+            // 아래->위 arr[i][j] 여기가 경사로를 놓는 지점이 됨
+            if (arr[i][j] == arr[i][j + 1] - 1)
             {
-                int cur_hight = road[i][h];
-                for (int k = h; k > h - l; k--)
+                for (int k = j; k > j - l; k--)
                 {
-                    if (k < 0 || road[i][k] != cur_hight || slope[k])
+                    if (k < 0 || arr[i][k] != arr[i][j] || visited[k])
                     {
-                        // L만큼의 여유와 경사로 설치 여부 확인
-                        possible = false;
+                        possible = 0;
                         break;
                     }
                 }
@@ -66,22 +61,23 @@ void PassCnt(int road[][101])
         }
         if (possible)
         {
-            result++; // 길이면 카운트
+            ans++;
         }
     }
 }
 
 int main()
 {
-    cin >> n >> l; // 입력
+    cin >> n >> l;
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
         {
-            cin >> road1[i][j];        // 가로로 가는 길 확인
-            road2[j][i] = road1[i][j]; // 세로로 가는 길 확인
+            cin >> rowArr[i][j];
+            colArr[j][i] = rowArr[i][j];
         }
     }
-    PassCnt(road1); // 가로로 가는 길 개수
-    PassCnt(road2); // 세로로 가는 길 개수
-    cout << result << endl;
+    computation(rowArr);
+    computation(colArr);
+    cout << ans << endl;
+}

@@ -20,6 +20,7 @@
 | 24.07.16          | 으악! 으악! 으악!                                              |
 | 24.07.17          | 외판원 순회C++                                                 |
 | 24.07.18          | [찾기(1786)](https://www.acmicpc.net/problem/1786) C++         |
-| 24.07.19          | [말이 되고픈 원숭이](https://www.acmicpc.net/problem/1600) c++ |
+| 24.07.19          | [말이 되고픈 원숭이](https://www.acmicpc.net/problem/1600) C++ |
 | 24.07.20~24.07.23 | 여행                                                           |
-| 24.07.24          | [A->B](https://www.acmicpc.net/problem/16953) c++              |
+| 24.07.24          | [A->B](https://www.acmicpc.net/problem/16953) C++              |
+| 24.07.245         | [DNA](https://www.acmicpc.net/problem/1969) C++                |

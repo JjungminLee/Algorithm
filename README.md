@@ -23,4 +23,5 @@
 | 24.07.19          | [말이 되고픈 원숭이](https://www.acmicpc.net/problem/1600) C++ |
 | 24.07.20~24.07.23 | 여행                                                           |
 | 24.07.24          | [A->B](https://www.acmicpc.net/problem/16953) C++              |
-| 24.07.245         | [DNA](https://www.acmicpc.net/problem/1969) C++                |
+| 24.07.25          | [DNA](https://www.acmicpc.net/problem/1969) C++                |
+| 24.07.26          | [빙산](https://www.acmicpc.net/problem/2573) C++               |

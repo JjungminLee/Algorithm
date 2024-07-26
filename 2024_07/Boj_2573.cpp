@@ -12,6 +12,7 @@ int dy[4] = {0, 0, -1, 1};
 
 // 빙산 줄이기
 // 복사된 배열 사용해야!
+// 굳이 bfs로 할 필요는 없음 -> 어차피 인접배열 탐색이 아닌 동서남북으로 빙하가 있는지 탐색하는 것이기 때문!
 
 void melt()
 {
@@ -26,7 +27,7 @@ void melt()
                 for (int k = 0; k < 4; k++)
                 {
                     int nx = i + dx[k];
-                    int ny = i + dy[k];
+                    int ny = j + dy[k];
                     if (arr[nx][ny] == 0)
                     {
                         decrease++;
@@ -88,10 +89,11 @@ int main()
         bool visited[301][301] = {0};
         for (int i = 0; i < n; i++)
         {
-            for (int j = 0; j < n; j++)
+            for (int j = 0; j < m; j++)
             {
                 if (arr[i][j] > 0 && !visited[i][j])
                 {
+                    visited[i][j] = true;
                     int areaCnt = findArea(i, j, visited);
                     if (areaCnt >= 1)
                     {

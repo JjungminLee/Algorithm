@@ -21,9 +21,11 @@ void melt()
     {
         for (int j = 0; j < m; j++)
         {
+
             if (arr[i][j] > 0)
             {
                 int decrease = 0;
+
                 for (int k = 0; k < 4; k++)
                 {
                     int nx = i + dx[k];
@@ -45,7 +47,6 @@ void melt()
 int findArea(int x, int y, bool visited[301][301])
 {
     int cnt = 1;
-
     queue<pair<int, int>> q;
     q.push({x, y});
     visited[x][y] = true;
@@ -54,14 +55,13 @@ int findArea(int x, int y, bool visited[301][301])
         int px = q.front().first;
         int py = q.front().second;
         q.pop();
-
         for (int i = 0; i < 4; i++)
         {
             int nx = px + dx[i];
             int ny = py + dy[i];
             if (nx >= 0 && nx < n && ny >= 0 && ny < m)
             {
-                if (!visited[nx][ny] && arr[nx][ny] != 0)
+                if (!visited[nx][ny] && arr[nx][ny] > 0)
                 {
                     visited[nx][ny] = true;
                     q.push({nx, ny});
@@ -86,14 +86,16 @@ int main()
     while (1)
     {
         int cnt = 0;
-        bool visited[301][301] = {0};
+        bool visited[301][301] = {
+            0,
+        };
         for (int i = 0; i < n; i++)
         {
             for (int j = 0; j < m; j++)
             {
-                if (arr[i][j] > 0 && !visited[i][j])
+                if (!visited[i][j] && arr[i][j] > 0)
                 {
-                    visited[i][j] = true;
+                    // visited[i][j] = true;
                     int areaCnt = findArea(i, j, visited);
                     if (areaCnt >= 1)
                     {

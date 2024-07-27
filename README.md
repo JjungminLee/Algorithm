@@ -25,3 +25,4 @@
 | 24.07.24          | [A->B](https://www.acmicpc.net/problem/16953) C++              |
 | 24.07.25          | [DNA](https://www.acmicpc.net/problem/1969) C++                |
 | 24.07.26          | [빙산](https://www.acmicpc.net/problem/2573) C++               |
+| 24.07.26          | [연속합](https://www.acmicpc.net/problem/1912) C++             |

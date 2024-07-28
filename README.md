@@ -27,3 +27,4 @@
 | 24.07.26          | [빙산](https://www.acmicpc.net/problem/2573) C++               |
 | 24.07.26          | [연속합](https://www.acmicpc.net/problem/1912) C++             |
 | 24.07.27          | [보석도둑](https://www.acmicpc.net/problem/1202) C++           |
+| 24.07.28          | [LCS](https://www.acmicpc.net/problem/9251) C++                |

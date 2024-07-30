@@ -17,7 +17,7 @@ int main()
     while (1)
     {
         idx++;
-        int ans = INT_MAX;
+
         int n;
         cin >> n;
         if (n == 0)
@@ -39,16 +39,33 @@ int main()
         // dist[i][j] 까지 왔을떄 최솟값을 다익스트라로!
         // 다익스트라 + 우선순위 큐로!
         // 현재까지 비용, x,y
-        priority_queue<tuple<int, int, int>> pq;
-        pq.push({0, 0, 0});
+        priority_queue<pair<int, pair<int, int>>> pq;
+        // 우선순위큐는 내림차순이 기본이기에 반대로
+        pq.push({-arr[0][0], {0, 0}});
+        dist[0][0] = arr[0][0];
         while (!pq.empty())
         {
-            int x, y, z;
-            tie(x, y, z) = pq.top();
+            int cost = -pq.top().first;
+            int x = pq.top().second.first;
+            int y = pq.top().second.second;
             pq.pop();
+            // 네 방향으로 이동하기!
+            for (int i = 0; i < 4; i++)
+            {
+                int nx = x + dx[i];
+                int ny = y + dy[i];
+                if (nx >= 0 && nx < n && ny >= 0 && ny < n)
+                {
+                    if (dist[nx][ny] > arr[nx][ny] + cost)
+                    {
+                        dist[nx][ny] = arr[nx][ny] + cost;
+                        pq.push({-dist[nx][ny], {nx, ny}});
+                    }
+                }
+            }
         }
 
-        ansArr.push_back(ans);
+        ansArr.push_back(dist[n - 1][n - 1]);
     }
     for (int i = 0; i < ansArr.size(); i++)
     {

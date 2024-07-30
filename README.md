@@ -25,9 +25,9 @@
 | 24.07.24          | [A->B](https://www.acmicpc.net/problem/16953) C++                                                                           |
 | 24.07.25          | [DNA](https://www.acmicpc.net/problem/1969) C++                                                                             |
 | 24.07.26          | [빙산](https://www.acmicpc.net/problem/2573) C++                                                                            |
-| 24.07.26          | [연속합](https://www.acmicpc.net/problem/1912) C++                                                                          |
-| 24.07.27          | [보석도둑](https://www.acmicpc.net/problem/1202) C++                                                                        |
-| 24.07.28          | [LCS](https://www.acmicpc.net/problem/9251) C++                                                                             |
-| 24.07.29          | [파일정리](https://www.acmicpc.net/problem/20291) [서로 다른 부분 문자열의 개수](https://www.acmicpc.net/problem/11478) C++ |
-| 24.07.30          |                                                                                                                             |
+| 24.07.27          | [연속합](https://www.acmicpc.net/problem/1912) C++                                                                          |
+| 24.07.28          | [보석도둑](https://www.acmicpc.net/problem/1202) C++                                                                        |
+| 24.07.29          | [LCS](https://www.acmicpc.net/problem/9251) C++                                                                             |
+| 24.07.30          | [파일정리](https://www.acmicpc.net/problem/20291) [서로 다른 부분 문자열의 개수](https://www.acmicpc.net/problem/11478) C++ |
 | 24.07.31          |                                                                                                                             |
+| 24.08.01          |                                                                                                                             |

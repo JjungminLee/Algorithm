@@ -40,7 +40,6 @@ int main()
         // 다익스트라 + 우선순위 큐로!
         // 현재까지 비용, x,y
         priority_queue<pair<int, pair<int, int>>> pq;
-        // 우선순위큐는 내림차순이 기본이기에 반대로
         pq.push({-arr[0][0], {0, 0}});
         dist[0][0] = arr[0][0];
         while (!pq.empty())
@@ -49,7 +48,6 @@ int main()
             int x = pq.top().second.first;
             int y = pq.top().second.second;
             pq.pop();
-            // 네 방향으로 이동하기!
             for (int i = 0; i < 4; i++)
             {
                 int nx = x + dx[i];

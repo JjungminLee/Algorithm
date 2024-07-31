@@ -19,7 +19,7 @@
 | 24.07.13          | 연구소 C++                                                                                                                  |
 | 24.07.14          | 가장 많이 받은 선물,책 페이지 C++                                                                                           |
 | 24.07.15          | 경사로 C++                                                                                                                  |
-| 24.07.16          | 으악! 으악! 으악!                                                                                                           |
+| 24.07.16          | ❎ 으악! 으악! 으악! ❎                                                                                                     |
 | 24.07.17          | 외판원 순회C++                                                                                                              |
 | 24.07.18          | [찾기(1786)](https://www.acmicpc.net/problem/1786) C++                                                                      |
 | 24.07.19          | [말이 되고픈 원숭이](https://www.acmicpc.net/problem/1600) C++                                                              |
@@ -31,5 +31,5 @@
 | 24.07.28          | [보석도둑](https://www.acmicpc.net/problem/1202) C++                                                                        |
 | 24.07.29          | [LCS](https://www.acmicpc.net/problem/9251) C++                                                                             |
 | 24.07.30          | [파일정리](https://www.acmicpc.net/problem/20291) [서로 다른 부분 문자열의 개수](https://www.acmicpc.net/problem/11478) C++ |
-| 24.07.31          | [녹색옷 입은 애가 젤다지?](https://www.acmicpc.net/problem/4485)                                                            |
+| 24.07.31          | [녹색옷 입은 애가 젤다지?](https://www.acmicpc.net/problem/4485) [알고스팟](https://www.acmicpc.net/problem/1261)           |
 | 24.08.01          |                                                                                                                             |

@@ -3,6 +3,7 @@ using namespace std;
 long long n;
 long long m;
 long long arr[101][101];
+bool visited[101][101];
 long long dist[101][101];
 int dx[4] = {-1, 1, 0, 0};
 int dy[4] = {0, 0, -1, 1};
@@ -24,6 +25,7 @@ int main()
     priority_queue<tuple<long long, long long, long long>> pq;
     dist[0][0] = 0;
     pq.push({-dist[0][0], 0, 0});
+
     while (!pq.empty())
     {
         long long cost, x, y;
@@ -32,7 +34,7 @@ int main()
 
         pq.pop();
         // 이미 처리된 코드이면 skip
-        if (cost > dist[x][y])
+        if (visited[x][y])
         {
             continue;
         }
@@ -42,8 +44,9 @@ int main()
             int ny = y + dy[i];
             if (nx >= 0 && nx < m && ny >= 0 && ny < n)
             {
-                if (dist[nx][ny] == INT_MAX)
+                if (dist[nx][ny] == LLONG_MAX)
                 {
+                    visited[x][y] = true;
                     if (arr[nx][ny] == 0)
                     {
                         dist[nx][ny] = min(dist[nx][ny], cost);
@@ -60,5 +63,5 @@ int main()
             }
         }
     }
-    cout << dist[n - 1][m - 1] << endl;
+    cout << dist[m - 1][n - 1] << endl;
 }

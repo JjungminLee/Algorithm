@@ -31,5 +31,5 @@
 | 24.07.28          | [보석도둑](https://www.acmicpc.net/problem/1202) C++                                                                        |
 | 24.07.29          | [LCS](https://www.acmicpc.net/problem/9251) C++                                                                             |
 | 24.07.30          | [파일정리](https://www.acmicpc.net/problem/20291) [서로 다른 부분 문자열의 개수](https://www.acmicpc.net/problem/11478) C++ |
-| 24.07.31          | [녹색옷 입은 애가 젤다지?](https://www.acmicpc.net/problem/4485) [알고스팟](https://www.acmicpc.net/problem/1261)           |
-| 24.08.01          |                                                                                                                             |
+| 24.07.31          | [녹색옷 입은 애가 젤다지?](https://www.acmicpc.net/problem/4485) [알고스팟](https://www.acmicpc.net/problem/1261) C++       |
+| 24.08.01          | [queuestack](https://www.acmicpc.net/problem/24511) C++                                                                     |

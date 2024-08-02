@@ -11,6 +11,7 @@ long long modPow(long long a, long long b, long long c)
     {
         return 0;
     }
+    // 최대한 b를 작게 나눠줌 (재귀 사용)
     long long half = modPow(a, b / 2, c);
     half = (half * half) % c; // 이게 있어야함 중요!
     if (b % 2 == 0)

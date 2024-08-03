@@ -34,5 +34,5 @@
 | 24.07.31          | [녹색옷 입은 애가 젤다지?](https://www.acmicpc.net/problem/4485) [알고스팟](https://www.acmicpc.net/problem/1261) C++       |
 | 24.08.01          | [queuestack](https://www.acmicpc.net/problem/24511) C++                                                                     |
 | 24.08.02          | [곱셈](https://www.acmicpc.net/problem/1629) C++                                                                            |
-| 24.08.03          | [곱셈](https://www.acmicpc.net/problem/1629) C++                                                                            |
-| 24.08.04          | [한 줄로 서기](https://www.acmicpc.net/problem/1138) C++                                                                    |
+| 24.08.03          | [한 줄로 서기](https://www.acmicpc.net/problem/1138) C++                                                                    |
+| 24.08.04          | [최소 비용 구하기](https://www.acmicpc.net/problem/1916) C++                                                                |

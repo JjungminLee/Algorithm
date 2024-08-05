@@ -36,3 +36,4 @@
 | 24.08.02          | [곱셈](https://www.acmicpc.net/problem/1629) C++                                                                            |
 | 24.08.03          | [한 줄로 서기](https://www.acmicpc.net/problem/1138) C++                                                                    |
 | 24.08.04          | [최소 비용 구하기](https://www.acmicpc.net/problem/1916) C++                                                                |
+| 24.08.06          | [치즈](https://www.acmicpc.net/problem/2638) C++                                                                            |

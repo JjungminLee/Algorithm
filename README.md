@@ -41,3 +41,4 @@
 | 24.08.07          | [약수의 합](https://www.acmicpc.net/problem/17427) C++                                                                      |
 | 24.08.08          | [N과M(2)](https://www.acmicpc.net/problem/15666) C++                                                                        |
 | 24.08.09          | [내려가기](https://www.acmicpc.net/problem/2096) C++                                                                        |
+| 24.08.10          | [바이러스](https://www.acmicpc.net/problem/2606) C++                                                                        |

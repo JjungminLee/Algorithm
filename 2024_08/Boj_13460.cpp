@@ -93,13 +93,11 @@ int main()
             {
                 start.rx = i;
                 start.ry = j;
-                board[i][j] = '.';
             }
             if (board[i][j] == 'B')
             {
                 start.bx = i;
                 start.by = j;
-                board[i][j] = '.';
             }
         }
     }

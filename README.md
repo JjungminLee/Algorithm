@@ -45,3 +45,4 @@
 | 24.08.11          | ❎ 양심상 돈낼게요 브론즈를 풀바엔 돈을 내겠다! 으악! ❎                                                                    |
 | 24.08.12          | [주유소](https://www.acmicpc.net/problem/13305) C++                                                                         |
 | 24.08.13          | [다리 만들기](https://www.acmicpc.net/problem/17472) C++                                                                    |
+| 24.08.14          | [구슬탈출 2](https://www.acmicpc.net/problem/13460) C++                                                                     |

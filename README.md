@@ -47,3 +47,4 @@
 | 24.08.13          | [다리 만들기](https://www.acmicpc.net/problem/17472) C++                                                                    |
 | 24.08.14          | [구슬탈출 2](https://www.acmicpc.net/problem/13460) C++                                                                     |
 | 24.08.15          | [가장 긴 증가하는 수열5](https://www.acmicpc.net/problem/14003) C++                                                         |
+| 24.08.16          | [해커톤](https://www.acmicpc.net/problem/16200) C++                                                                         |

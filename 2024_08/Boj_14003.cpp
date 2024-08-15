@@ -46,7 +46,7 @@ int main()
 
     // LIS 추적
     int lis_end = lis_index.back();
-    cout << lis_end << endl;
+
     vector<int> lis;
     for (int i = lis_end; i != -1; i = parent[i])
     {

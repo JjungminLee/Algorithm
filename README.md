@@ -50,3 +50,4 @@
 | 24.08.16          | [해커톤](https://www.acmicpc.net/problem/16200) C++                                                                         |
 | 24.08.17          | [연결요소의 개수](https://www.acmicpc.net/problem/11724) C++                                                                |
 | 24.08.18          | [최솟값과 최댓값](https://www.acmicpc.net/problem/2357) C++                                                                 |
+| 24.08.19          | [AC](https://www.acmicpc.net/problem/5430)                                                                                  |

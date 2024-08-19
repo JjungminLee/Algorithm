@@ -1,6 +1,25 @@
 #include <bits/stdc++.h>
 using namespace std;
 int t;
+
+/*
+T: 1
+
+P: D
+
+n: 0
+
+arr: []
+
+
+T: 1
+
+P: R
+
+n: 0
+
+arr: []
+*/
 int main()
 {
     ios_base::sync_with_stdio(false);

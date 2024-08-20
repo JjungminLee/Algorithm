@@ -81,7 +81,16 @@ int main()
             }
         }
     }
-    if (ans == 0)
+    bool flag = false;
+    int std = find(parents[0]);
+    for (int i = 1; i < n; i++)
+    {
+        if (find(parents[i]) != std)
+        {
+            flag = true;
+        }
+    }
+    if (flag)
     {
         cout << -1 << endl;
     }
@@ -89,4 +98,5 @@ int main()
     {
         cout << ans << endl;
     }
+    return 0;
 }

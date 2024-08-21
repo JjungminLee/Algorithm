@@ -53,3 +53,4 @@
 | 24.08.19          | [AC](https://www.acmicpc.net/problem/5430) C++                                                                              |
 | 24.08.20          | [인기투표](https://www.acmicpc.net/problem/11637) C++                                                                       |
 | 24.08.21          | [나만 안되는 연애](https://www.acmicpc.net/problem/14621) C++                                                               |
+| 24.08.22          | [터렛](https://www.acmicpc.net/problem/1002) C++                                                                            |

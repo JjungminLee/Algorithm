@@ -54,3 +54,6 @@
 | 24.08.20          | [인기투표](https://www.acmicpc.net/problem/11637) C++                                                                       |
 | 24.08.21          | [나만 안되는 연애](https://www.acmicpc.net/problem/14621) C++                                                               |
 | 24.08.22          | [터렛](https://www.acmicpc.net/problem/1002) C++                                                                            |
+| 24.08.23          | ❎개인사정❎                                                                                                                |
+| 24.08.24          | ❎개인사정❎                                                                                                                |
+| 24.08.25          | [수영장 만들기](https://www.acmicpc.net/problem/1113) C++                                                                   |

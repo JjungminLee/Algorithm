@@ -56,4 +56,4 @@
 | 24.08.22          | [터렛](https://www.acmicpc.net/problem/1002) C++                                                                            |
 | 24.08.23          | ❎개인사정❎                                                                                                                |
 | 24.08.24          | ❎개인사정❎                                                                                                                |
-| 24.08.25          | [수영장 만들기](https://www.acmicpc.net/problem/1113) C++                                                                   |
+| 24.08.25          | [숫자야구](https://www.acmicpc.net/problem/1113) C++ [떡먹는 호랑이](https://www.acmicpc.net/problem/2502) C++              |

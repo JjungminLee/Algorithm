@@ -57,3 +57,5 @@
 | 24.08.23          | ❎개인사정❎                                                                                                                |
 | 24.08.24          | ❎개인사정❎                                                                                                                |
 | 24.08.25          | [숫자야구](https://www.acmicpc.net/problem/1113) C++ [떡먹는 호랑이](https://www.acmicpc.net/problem/2502) C++              |
+| 24.08.26          | ❎16637번 풀고 싶어서 하루 고민함 또르륵❎                                                                                  |
+| 24.08.27          | [괄호추가하기](https://www.acmicpc.net/problem/16637) C++                                                                   |

@@ -1,76 +1,105 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
+
 int n;
-vector<tuple<int,int,int>>v;
-vector<int>ans;
-int main(){
-    cin>>n;
-    for(int i=0;i<n;i++){
-        int num;
-        int ball;
-        int strike;
-        cin>>num>>strike>>ball;
-        v.push_back({num,strike,ball});
+int arr[20]; // 배열 크기는 수식의 길이에 맞춰 설정
+vector<tuple<int, char, int>> v;
+int ans = INT_MIN;
 
+// 주어진 수식을 연산할 수 있게 변환하는 함수
+void make_comb() {
+    for (int i = 0; i < n - 2; i += 2) {
+        int first = arr[i];
+        char oper = (char)arr[i + 1];
+        int second = arr[i + 2];
+        v.push_back({first, oper, second});
     }
-    
+}
 
-    for(int i=123;i<=987;i++){
-        int std=i;
-        int h1=std/100;
-        int t1=(std%100)/10;
-        int o1=(std%100)%10;
-        int fit=0;
-        // 0이 중복
-        if(h1==0 || t1==0 || o1==0){
-            continue;
-        }
-        // 서로 같은 숫자일떄 -> 생각도 못함!
-        if(h1==t1 || t1==o1||h1==o1){
-            continue;
-        }
-            
-        for(int j=0;j<n;j++){
-            int num,ball,strike;
-            tie(num,strike,ball)=v[j];
-           
-            int h2=num/100;
-            int t2=(num%100)/10;
-            int o2=(num%100)%10;
-            
-            int s=0;
-            int b=0;
+// 연산 함수
+int calculate(int a, char oper, int b) {
+    if (oper == '+') return a + b;
+    if (oper == '-') return a - b;
+    if (oper == '*') return a * b;
+    return 0;
+}
 
-            //개별적 비교!
-            if(h1==h2){
-                s++;
-            }
-            if(t1==t2){
-                s++;
-            }
-            if(o1==o2){
-                s++;
-            }
-            if(h1==t2||h1==o2){
-                b++;
-            }
-            if(t1==h2||t1==o2){
-                b++;
-            }
-            if(o1==h2||o1==t2){
-                b++;
-            }
-            if(strike==s&&ball==b){
-                fit++;
-            }
-          
+// 수식 계산 함수
+void operate(int cnt, int current, vector<bool> &visited) {
+    if (cnt == 0) {
+        int operateAns = arr[0];
+        for (int i = 1; i < n; i += 2) {
+            char oper = (char)arr[i];
+            int second = arr[i + 1];
+            operateAns = calculate(operateAns, oper, second);
         }
-       
-        if(fit==n){
-            ans.push_back(std);
+        ans = max(ans, operateAns);
+        return;
+    }
+
+    if (cnt == current) {
+        vector<int> nums;
+        vector<char> ops;
+        int i = 0;
+
+        while (i < v.size()) {
+            int first, second;
+            char oper;
+            tie(first, oper, second) = v[i];
+
+            if (visited[i]) {
+                first = calculate(first, oper, second);
+                if (i + 1 < v.size()) {
+                    i++;
+                    tie(ignore, oper, second) = v[i];
+                }
+            }
+            nums.push_back(first);
+            if (i < v.size()) ops.push_back(oper);
+            i++;
+        }
+
+        int result = nums[0];
+        for (int i = 0; i < ops.size(); i++) {
+            result = calculate(result, ops[i], nums[i + 1]);
+        }
+
+        ans = max(ans, result);
+        return;
+    }
+
+    for (int i = 0; i < v.size(); i++) {
+        if (!visited[i] && (i == 0 || !visited[i - 1])) {
+            visited[i] = true;
+            operate(cnt, current + 1, visited);
+            visited[i] = false;
         }
     }
-    cout<<ans.size()<<endl;
+}
 
-  
+int main() {
+    cin >> n;
+    string input;
+    cin >> input;
+
+    // 입력 처리
+    for (int i = 0; i < input.length(); i++) {
+        if (i % 2 == 1) {
+            arr[i] = (char)input[i];
+        } else {
+            arr[i] = input[i] - '0';
+        }
+    }
+
+    make_comb();
+
+    int comb = (n / 2) + 1;
+    for (int i = 0; i <= comb; i++) {
+        vector<bool> visited(v.size(), false);
+        operate(i, 0, visited);
+    }
+
+    cout << ans << endl;
+
+    return 0;
 }

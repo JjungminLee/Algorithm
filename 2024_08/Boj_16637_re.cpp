@@ -26,6 +26,7 @@ void recursive(int idx,int cur){
     }
     if(idx+2<n){
         int num=cal(input[idx]-'0',input[idx+2]-'0',input[idx+1]);
+        // 순서 중요 -> 이전꺼 (oper) 괄호통해 계산한거 순이여야 (만약에 마이너스라면?!)
         recursive(idx+4,cal(cur,num,oper));
     }
     recursive(idx+2,cal(cur,input[idx]-'0',oper));

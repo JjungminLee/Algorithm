@@ -23,7 +23,9 @@ void bfs(int h){
         for(int k=0;k<4;k++){
             int nx=x+dx[k];
             int ny=y+dy[k];
-            if(nx>=0&&nx<n&&ny>=0&&ny<m){
+            // 여기가 제일 어려움!
+            // 외부 경계 떄문에 실제로는 1부터 n까지 입력됐지만 0부터 n+1까지 검사
+            if(nx>=0&&nx<=n+1&&ny>=0&&ny<=m+1){
                 if(arr[nx][ny]<h){
                     arr[nx][ny]=h;
                     q.push({nx,ny});
@@ -35,10 +37,12 @@ void bfs(int h){
 }
 int main(){
     cin>>n>>m;
-    for(int i=0;i<n;i++){
-        cin>>s;
-        for(int j=0;j<m;j++){
-            arr[i][j]=s[j]-'0';
+    for(int i=1;i<=n;i++){
+      
+        for(int j=1;j<=m;j++){
+            char ch;
+            cin>>ch;
+            arr[i][j]=ch-'0';
             if(maxH<arr[i][j]){
                 maxH=arr[i][j];
             }
@@ -48,10 +52,10 @@ int main(){
         }
     }
 
-    for(int i=minH;i<=maxH;i++){
+    for(int i=1;i<=maxH;i++){
         bfs(i);
-        for(int j=1;j<n-1;j++){
-            for(int k=1;k<m-1;k++){
+        for(int j=1;j<=n;j++){
+            for(int k=1;k<=m;k++){
                 if(arr[j][k]<i){
                     // 물 추가시키기
                     arr[j][k]+=1;
@@ -60,7 +64,8 @@ int main(){
             }
         }
     }
-   
+
+
     cout<<ans<<endl;
     
 }

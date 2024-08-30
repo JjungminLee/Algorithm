@@ -1,66 +1,10 @@
-#include <bits/stdc++.h>
-using namespace std;
-int n,m;
-int arr[52][52];
-string s;
-int maxH=INT_MIN;
-int minH=INT_MAX;
-int ans;
-bool visited[51][51];
-int dx[4]={-1,1,0,0};
-int dy[4]={0,0,-1,1};
-//외부에서 내부로 물이 흘러들어갈 수 있는 모든 경로 탐색
-void bfs(int h){
-    queue<pair<int,int>>q;
-    q.push({0,0});
-    arr[0][0]=h;
-    memset(visited,0,sizeof(visited));
-    visited[0][0]=true;
-    while(!q.empty()){
-        int x= q.front().first;
-        int y=q.front().second;
-        q.pop();
-        for(int k=0;k<4;k++){
-            int nx=x+dx[k];
-            int ny=y+dy[k];
-            if(nx>=0&&nx<n&&ny>=0&&ny<m){
-                if(arr[nx][ny]<h){
-                    arr[nx][ny]=h;
-                    q.push({nx,ny});
-                }
-            }
+ cout<<"rec"<<endl;
+        for(int i=0;i<recom.size();i++){
+            cout<<"first "<<recom[i].first<<"second "<<recom[i].second<<endl;
         }
-    }
-
-}
-int main(){
-    cin>>n>>m;
-    for(int i=0;i<n;i++){
-        cin>>s;
-        for(int j=0;j<m;j++){
-            arr[i][j]=s[j]-'0';
-            if(maxH<arr[i][j]){
-                maxH=arr[i][j];
-            }
-            if(minH>arr[i][j]){
-                minH=arr[i][j];
-            }
+        cout<<endl;
+        cout<<"v "<<endl;
+        for(int i=0;i<v.size();i++){
+            cout<<v[i]<<" ";
         }
-    }
-
-    for(int i=minH;i<=maxH;i++){
-        bfs(i);
-        for(int j=1;j<n-1;j++){
-            for(int k=1;k<m-1;k++){
-                if(arr[j][k]<i){
-                    // 물 추가시키기
-                    arr[j][k]+=1;
-                    ans++;
-                }
-            }
-        }
-    }
-   
-    cout<<ans<<endl;
-    
-}
+        cout<<endl;

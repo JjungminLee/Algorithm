@@ -23,7 +23,7 @@
 | 24.07.17          | 외판원 순회C++                                                                                                              |
 | 24.07.18          | [찾기(1786)](https://www.acmicpc.net/problem/1786) C++                                                                      |
 | 24.07.19          | [말이 되고픈 원숭이](https://www.acmicpc.net/problem/1600) C++                                                              |
-| 24.07.20~24.07.23 | 여행                                                                                                                        |
+| 24.07.20~24.07.23 | 🇯🇵 삿포로 여행                                                                                                              |
 | 24.07.24          | [A->B](https://www.acmicpc.net/problem/16953) C++                                                                           |
 | 24.07.25          | [DNA](https://www.acmicpc.net/problem/1969) C++                                                                             |
 | 24.07.26          | [빙산](https://www.acmicpc.net/problem/2573) C++                                                                            |
@@ -61,3 +61,5 @@
 | 24.08.27          | [괄호추가하기](https://www.acmicpc.net/problem/16637) C++                                                                   |
 | 24.08.28          | [트럭](https://www.acmicpc.net/problem/13335) C++                                                                           |
 | 24.08.29          | [수영장 만들기](https://www.acmicpc.net/problem/1113) C++                                                                   |
+| 24.08.30          | [후보 추천하기](https://www.acmicpc.net/problem/1713) C++                                                                   |
+| 24.08.31          | 🥖 대전여행                                                                                                                 |

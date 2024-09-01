@@ -31,6 +31,7 @@ int main() {
         }
 
         // 최대하중을 넘기지 않는 경우
+        // idx<n을 확인해야했음
         if (idx < n && sum + v[idx] <= l) {
             dq.push_back(v[idx]);
             sum += v[idx];

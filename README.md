@@ -7,3 +7,4 @@
 | 24.11.06 | [학생번호](https://www.acmicpc.net/problem/1235) C++                                        |
 | 24.11.07 | [택배배달과 수거하기](https://school.programmers.co.kr/learn/courses/30/lessons/150369) C++ |
 | 24.11.08 | [케빈 베이컨의 6단계 법칙](https://www.acmicpc.net/problem/1389) C++                        |
+| 24.11.09 | [막대기](https://www.acmicpc.net/problem/1094) C++                                          |

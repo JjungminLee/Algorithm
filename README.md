@@ -11,3 +11,4 @@
 | 24.11.10 | [미로만들기](https://www.acmicpc.net/problem/2665) C++                                      |
 | 24.11.11 | [이모티콘 할인행사](https://school.programmers.co.kr/learn/courses/30/lessons/150368) C++   |
 | 24.11.12 | [택배배송](https://www.acmicpc.net/problem/5972) C++                                        |
+| 24.11.13 | [빗물](https://www.acmicpc.net/problem/14719) C++                                           |

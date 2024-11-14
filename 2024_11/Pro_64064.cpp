@@ -1,11 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 set<set<string>> allCases;
+/*
+중복관리가 힘들때는 => set을 이용!*/
 void backtracking(int depth, vector<string> user_id, vector<string> banned_id, set<string> curset)
 {
     if (depth == banned_id.size())
     {
         allCases.insert(curset);
+        return;
     }
 
     for (int i = 0; i < user_id.size(); i++)
@@ -14,17 +17,17 @@ void backtracking(int depth, vector<string> user_id, vector<string> banned_id, s
         {
             continue;
         }
-        if (user_id.size() != banned_id[depth].size())
+        if (user_id[i].size() != banned_id[depth].size())
         {
 
             continue;
         }
         bool isCorrect = true;
-        for (int j = 0; j < user_id[i].size(); j++)
+        for (int j = 0; j < banned_id[depth].size(); j++)
         {
-            if (user_id[i][j] != banned_id[i][j])
+            if (user_id[i][j] != banned_id[depth][j])
             {
-                if (banned_id[i][j] == '*')
+                if (banned_id[depth][j] == '*')
                 {
                     continue;
                 }

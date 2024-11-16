@@ -13,3 +13,5 @@
 | 24.11.12 | [택배배송](https://www.acmicpc.net/problem/5972) C++                                        |
 | 24.11.13 | [빗물](https://www.acmicpc.net/problem/14719) C++                                           |
 | 24.11.14 | [불량 사용자](https://school.programmers.co.kr/learn/courses/30/lessons/64064) C++          |
+| 24.11.15 |                                                                                             |
+| 24.11.14 | [영단어 암기는 괴로워](https://www.acmicpc.net/problem/20920) C++                           |

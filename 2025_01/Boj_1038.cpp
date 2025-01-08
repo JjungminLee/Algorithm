@@ -1,14 +1,14 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-int num;
+long long num;
 
-vector<int> v;
-unordered_set<int> visited;
-void backTracking(int num, int time)
+vector<long long> v;
+unordered_set<long long> visited;
+void backTracking(long long num, long long time)
 { // 42 ,1
 
-    if (time == 7 || visited.count(num))
+    if (time == 11 || visited.count(num))
     {
         return;
     }
@@ -48,12 +48,12 @@ int main()
     }
     sort(v.begin(), v.end());
 
-    if (v.size() < num)
+    if (v.size() > num)
     {
-        cout << -1 << endl;
+        cout << v[num] << endl;
     }
     else
     {
-        cout << v[num] << endl;
+        cout << -1 << endl;
     }
 }

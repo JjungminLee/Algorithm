@@ -5,14 +5,13 @@ int ans;
 int combination(int n, int r)
 {
     int res = 1;
-    if (n - r < r)
+    if (r > n - r)
     {
         r = n - r;
     }
-
     for (int i = 0; i < r; i++)
     {
-        res = ((res * (n - i)) / (i + 1));
+        res = (res * (n - i)) / (i + 1);
     }
     return res;
 }

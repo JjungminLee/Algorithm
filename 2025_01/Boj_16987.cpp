@@ -22,7 +22,8 @@ int main()
             int right = v[j].first;
             int rightWeight = v[j].first;
 
-            // int brokenLeft = v[i].second-
+            // int brokenLeft = v[i].second-ㄹ
+            // dd
         }
     }
 }

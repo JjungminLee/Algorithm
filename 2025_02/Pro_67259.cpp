@@ -68,7 +68,7 @@ void dijkstra(int n, vector<vector<int>> board)
 int solution(vector<vector<int>> board)
 {
     int answer = 0;
-    bfs(board.size(), board);
+    dijkstra(board.size(), board);
     answer = money;
     return answer;
 }

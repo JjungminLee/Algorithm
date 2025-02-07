@@ -15,12 +15,16 @@ int main()
         {
             char c = str[j];
             mp[c]++;
-            if (mp[c] % 3 == 0 && j > 0)
+            if (mp[c] % 3 == 0)
             {
+
                 if (str[j + 1] != c)
                 {
+
                     flag = false;
+                    break;
                 }
+                j++;
             }
         }
         if (!flag)

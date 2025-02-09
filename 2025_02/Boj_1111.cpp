@@ -20,7 +20,7 @@ int main()
     else
     {
         a = (v[2] - v[1]) / (v[1] - v[0]);
-        b = v[2] - v[1] * a;
+        b = v[1] - v[0] * a;
     }
 
     bool flag = true;
@@ -31,6 +31,7 @@ int main()
         if (first * a + b != second)
         {
             flag = false;
+            break;
         }
     }
     if (v.size() == 1)
@@ -45,7 +46,7 @@ int main()
         }
         else
         {
-            cout << "B" << endl;
+            cout << "A" << endl;
         }
     }
     else

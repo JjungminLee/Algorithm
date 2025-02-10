@@ -1,35 +1,38 @@
 #include <bits/stdc++.h>
 using namespace std;
-int n;
+int x, y;
 
+typedef long long ll;
+bool check(ll mid)
+{
+    return x * (y + mid) > y * (x + mid);
+}
 int main()
 {
-    cin >> n;
-    for (int i = 0; i < n; i++)
+    cin >> x >> y;
+    ll z = (y * 100) / x;
+    if (z >= 99)
     {
-        string str;
-        cin >> str;
-        unordered_map<char, int> mp;
-        bool flag = true;
-        for (int j = 0; j < str.size(); j++)
-        {
-            char c = str[j];
-            mp[c]++;
-            if (mp[c] % 3 == 0 && j > 0)
-            {
-                if (str[j + 1] != c)
-                {
-                    flag = false;
-                }
-            }
-        }
-        if (!flag)
-        {
-            cout << "FAKE" << endl;
+        cout << -1 << endl;
+        return 0;
+    }
+    ll left = 1;
+    ll right = 1e9;
+    int ans = -1;
+    while (left <= right)
+    {
+        ll mid = (left + right) / 2;
+
+        if (check(mid))
+        { // 승률이 변했으면 더 최소값을 탐색
+            ans = mid;
+            // 최소값 탐색
+            right = mid - 1;
         }
         else
         {
-            cout << "OK" << endl;
+            left = mid + 1;
         }
     }
+    cout << ans << endl;
 }

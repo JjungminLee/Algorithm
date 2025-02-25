@@ -33,7 +33,7 @@ bool find(int a, int b)
 {
     int aRoot = getRoot(a);
     int bRoot = getRoot(b);
-    if (aRoot == bRoot)
+    if (parents[aRoot] == parents[bRoot])
     {
         return true;
     }
@@ -59,7 +59,13 @@ int main()
         c = v[i].first;
         a = v[i].second.first;
         b = v[i].second.second;
-
+    }
+    for (int i = 0; i < m; i++)
+    {
+        int a, b, c;
+        a = v[i].second.first;
+        b = v[i].second.second;
+        c = v[i].first;
         if (!find(a, b))
         {
             unionParent(a, b);

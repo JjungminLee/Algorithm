@@ -1,36 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
-int n;
-int lis[1000];
-int arr[1000];
-int lds[1000];
+int n, k;
+long long dp[100001];
+
 int main()
 {
-    cin >> n;
+    cin >> n >> k;
     for (int i = 0; i < n; i++)
     {
-        cin >> arr[i];
-        lis[i] = 1;
-        lds[i] = 1;
+        int a, b;
+        cin >> a >> b;
+        dp[a] = b;
     }
-    for (int i = 0; i < n; i++)
+    for (int i = 1; i <= k; i++)
     {
-        for (int j = 0; j < i; j++)
+        for (int j = 1; j <= i; j++)
         {
-            if (arr[i] > arr[j])
-            {
-                lis[i] = max(lis[i], lis[j] + 1);
-            }
-            if (arr[i] < arr[j])
-            {
-                lds[i] = max(lds[i], lds[j] + 1);
-            }
+
+            dp[i] = max(dp[i], dp[j] + dp[i - j]);
         }
     }
-    int ans = 0;
-    for (int i = 0; i < n; i++)
-    {
-        ans = max(lis[i] + lds[i], ans);
-    }
-    cout << ans + 1 << endl;
+    cout << dp[k] << endl;
 }

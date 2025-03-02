@@ -1,2 +1,1 @@
-        cout << "start x" << startX << "starty " << startY << endl;
-        cout << "end x" << endX << "end y" << endY << endl;
+== '.' || (isupper(arr[i][0]) && mp[tolower(arr[i][0])] > 0)

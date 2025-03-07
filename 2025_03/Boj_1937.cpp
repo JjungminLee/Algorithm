@@ -9,13 +9,13 @@ int dx[4] = {-1, 1, 0, 0};
 int dy[4] = {0, 0, -1, 1};
 int ans;
 
-void dfs(int x, int y)
+int dfs(int x, int y)
 {
     if (dp[x][y] != -1)
     {
-        return;
+        return dp[x][y];
     }
-    dp[x][y] = 0;
+    dp[x][y] = 1;
     for (int i = 0; i < 4; i++)
     {
         int nx = x + dx[i];
@@ -24,11 +24,11 @@ void dfs(int x, int y)
         {
             if (arr[x][y] < arr[nx][ny])
             {
-                dp[x][y] += 1;
-                dfs(nx, ny);
+                dp[x][y] = max(dp[x][y], dfs(nx, ny) + 1);
             }
         }
     }
+    return dp[x][y];
 }
 int main()
 {

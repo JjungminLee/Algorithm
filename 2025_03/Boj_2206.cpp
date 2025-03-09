@@ -39,7 +39,7 @@ void bfs()
                 else if (visited[wall][nx][ny] == 0 && arr[nx][ny] == 1 && wall == 0)
                 {
                     visited[1][nx][ny] = visited[0][x][y] + 1;
-                    q.push({nx, ny, wall});
+                    q.push({nx, ny, 1});
                 }
             }
         }

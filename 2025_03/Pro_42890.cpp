@@ -31,8 +31,8 @@ void backtracking(int depth, int start, vector<int> v, vector<vector<string>> re
             vector<int> subcan = candidate[i];
             for (int j = 0; j < subcan.size(); j++)
             {
-                // 현재 v안에 candidate[i][j]가 있으면 v가 부분집합이 아니게됨
-                if (find(v.begin(), v.end(), subcan[i]) == v.end())
+                // 현재 v안에 candidate[i][j]가 없으면 v가 부분집합이 아니게됨
+                if (find(v.begin(), v.end(), subcan[j]) == v.end())
                 {
                     isSubset = false;
                     break;

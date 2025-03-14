@@ -57,6 +57,7 @@ pair<int, int> bfs(int x, int y, int map[16][16])
         int dist = q.front().first;
         int xx = q.front().second.first;
         int yy = q.front().second.second;
+
         q.pop();
 
         if (dist > d)
@@ -152,12 +153,13 @@ int main()
 
             for (int j = 0; j < 3; j++)
             {
-                pair<int, int> p = bfs(n - 1, comb[j], map);
+                pair<int, int> p = bfs(n, comb[j], map);
                 if (p.first != -1 && p.second != -1)
                 {
                     deleteEnemy.insert(p);
                 }
             }
+            cout << "-----" << endl;
             for (auto it = deleteEnemy.begin(); it != deleteEnemy.end(); it++)
             {
                 int x = it->first;

@@ -42,7 +42,7 @@ void bfs()
         q.pop();
         if (cur.moves > 10)
         {
-            cout << 1 << endl;
+
             cout << -1 << endl;
             return;
         }
@@ -74,7 +74,7 @@ void bfs()
             }
             if (nbx == nrx && nby == nry)
             {
-                if (abs(nrx - rx) + abs(nry - ry) < abs(nbx - bx) + abs(nby - by))
+                if (abs(nrx - cur.rx) + abs(nry - cur.ry) < abs(nbx - cur.bx) + abs(nby - cur.by))
                 {
                     nbx -= dx[i];
                     nby -= dy[i];
@@ -92,7 +92,7 @@ void bfs()
             }
         }
     }
-    cout << 3 << endl;
+
     cout << -1 << endl;
     return;
 }

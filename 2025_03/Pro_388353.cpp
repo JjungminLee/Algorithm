@@ -21,8 +21,8 @@ int solution(vector<string> storage, vector<string> requests)
     {
         if (req.size() == 1)
         {
-            char target = req[0];
 
+            char target = req[0];
             bool visited[51][51] = {
                 false,
             };
@@ -30,51 +30,55 @@ int solution(vector<string> storage, vector<string> requests)
                 false,
             };
             queue<pair<int, int>> q;
+            // 빈칸들 먼저 연결하고, 접근 가능한지 판단
+            for (int i = 0; i < col; i++)
+            {
+                if (!visited[0][i] && arr[0][i] == '\0')
+                {
+                    visited[0][i] = true;
+                    q.push({0, i});
+                }
+                if (!visited[row - 1][i] && arr[row - 1][i] == '\0')
+                {
+                    visited[row - 1][i] = true;
+                    q.push({row - 1, i});
+                }
+            }
 
-            // 경계에 있는 빈 칸들부터 시작
             for (int i = 0; i < row; i++)
             {
-                if (arr[i][0] == '\0' && !visited[i][0])
+                if (!visited[i][0] && arr[i][0] == '\0')
                 {
                     visited[i][0] = true;
                     q.push({i, 0});
                 }
-                if (arr[i][col - 1] == '\0' && !visited[i][col - 1])
+                if (!visited[i][col - 1] && arr[i][col - 1] == '\0')
                 {
                     visited[i][col - 1] = true;
                     q.push({i, col - 1});
                 }
             }
-            for (int j = 0; j < col; j++)
-            {
-                if (arr[0][j] == '\0' && !visited[0][j])
-                {
-                    visited[0][j] = true;
-                    q.push({0, j});
-                }
-                if (arr[row - 1][j] == '\0' && !visited[row - 1][j])
-                {
-                    visited[row - 1][j] = true;
-                    q.push({row - 1, j});
-                }
-            }
-
             while (!q.empty())
             {
-                int x = q.front().first, y = q.front().second;
+                int x = q.front().first;
+                int y = q.front().second;
                 q.pop();
                 accessible[x][y] = true;
                 for (int k = 0; k < 4; k++)
                 {
-                    int nx = x + dx[k], ny = y + dy[k];
-                    if (nx >= 0 && nx < row && ny >= 0 && ny < col && !visited[nx][ny] && arr[nx][ny] == '\0')
+                    int nx = x + dx[k];
+                    int ny = y + dy[k];
+                    if (nx >= 0 && nx < row && ny >= 0 && ny < col)
                     {
-                        visited[nx][ny] = true;
-                        q.push({nx, ny});
+                        if (!visited[nx][ny] && arr[nx][ny] == '\0')
+                        {
+                            visited[nx][ny] = true;
+                            q.push({nx, ny});
+                        }
                     }
                 }
             }
-
+            // target인 지점 중에서 빈칸 연결인지 찾기
             for (int i = 0; i < row; i++)
             {
                 for (int j = 0; j < col; j++)
@@ -82,18 +86,17 @@ int solution(vector<string> storage, vector<string> requests)
                     if (arr[i][j] == target)
                     {
                         bool acc = false;
-                        // 경계에 위치하면 바로 접근 가능
-                        if (i == 0 || i == row - 1 || j == 0 || j == col - 1)
+                        if (i == 0 || j == 0 || i == row - 1 || j == col - 1)
                         {
                             acc = true;
                         }
                         else
                         {
-                            // 인접한 셀 중 하나라도 외부와 연결된 빈 영역이면 접근 가능
                             for (int k = 0; k < 4; k++)
                             {
-                                int nx = i + dx[k], ny = j + dy[k];
-                                // 인접 셀이 격자 밖이면 외부와 연결된 것이므로 접근 가능
+                                int nx = i + dx[k];
+                                int ny = j + dy[k];
+                                // 외부와 연결됨 중요!!
                                 if (nx < 0 || nx >= row || ny < 0 || ny >= col)
                                 {
                                     acc = true;

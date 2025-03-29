@@ -1,18 +1,35 @@
- // for (int i = 1; i <= n; i++)
-    // {
-    //     for (int j = i + 1; j <= n; j++)
-    //     {
-    //         for (int k = i; k <= j; k++)
-    //         {
-    //             dp[i][j] = max(dp[i][j], dp[i][k] + dp[k][j]);
-    //         }
-    //     }
-    // }
-    // for (int i = 1; i <= n; i++)
-    // {
-    //     for (int j = 1; j <= n; j++)
-    //     {
-    //         cout << dp[i][j] << " ";
-    //     }
-    //     cout << endl;
-    // }
+#include <bits/stdc++.h>
+using namespace std;
+int N, r, c;
+int cnt = 0;
+int ans;
+bool found = false;
+void divideFunc(int startX, int startY, int n)
+{
+    if (found)
+        return;
+    if (n == 1)
+    {
+
+        if (startX == r && startY == c)
+        {
+            ans = cnt;
+            found = true;
+            return;
+        }
+        cnt++;
+        return;
+    }
+    int half = n / 2;
+    divideFunc(startX, startY, half);
+    divideFunc(startX, startY + half, half);
+    divideFunc(startX + half, startY, half);
+    divideFunc(startX + half, startY + half, half);
+}
+int main()
+{
+    cin >> N >> r >> c;
+    int size = 1 << N;
+    divideFunc(0, 0, size);
+    cout << ans << endl;
+}

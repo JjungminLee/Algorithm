@@ -35,9 +35,11 @@ void moving(State &state)
     int d = state.d - 1;
     int s = state.s;
 
+    // 위 아래 일때는 행의 끝까지!
     if (d == 0 || d == 1)
         s %= (2 * (R - 1));
     else
+        // 왼 오 일때는 열의 끝까지!
         s %= (2 * (C - 1));
 
     while (s--)

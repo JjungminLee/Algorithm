@@ -1,81 +1,77 @@
 #include <bits/stdc++.h>
+
 using namespace std;
-vector<bool> v;
-vector<int> del;
+
 string solution(int n, int k, vector<string> cmd)
 {
     string answer = "";
+    vector<int> prev(n), next(n);
+    stack<int> deleted;
+    vector<bool> isExist(n, true);
     for (int i = 0; i < n; i++)
     {
-        v.push_back(true);
+        prev[i] = i - 1;
+        next[i] = i + 1;
     }
-    int curPos = k;
-    for (int i = 0; i < cmd.size(); i++)
+    next[n - 1] = -1;
+    int cur = k;
+    for (string str : cmd)
     {
-        string str = cmd[i];
-        if (str[0] == 'D')
+        if (str[0] == 'U')
         {
-            int x = stoi(str.substr(2));
-            while (x > 0 && curPos < v.size() - 1)
+            int num = stoi(str.substr(2));
+            while (num--)
             {
-                curPos++;
-                if (v[curPos])
-                    x--;
+                cur = prev[cur];
+            }
+        }
+        else if (str[0] == 'D')
+        {
+            int num = stoi(str.substr(2));
+            while (num--)
+            {
+                cur = next[cur];
             }
         }
         else if (str[0] == 'C')
         {
-            int isEnd = true;
-            int delPos = curPos;
-            del.push_back(delPos);
-            for (int j = curPos + 1; j < v.size(); j++)
+            deleted.push(cur);
+            isExist[cur] = false;
+            if (prev[cur] != -1)
             {
-                if (v[j])
-                {
-                    curPos = j;
-                    isEnd = false;
-                    break;
-                }
+                next[prev[cur]] = next[cur];
             }
-            if (isEnd)
+            if (next[cur] != -1)
             {
-                // 문제 잘 읽기 -> 바로 윗행
-                for (int j = curPos - 1; j >= 0; j--)
-                {
-                    if (v[j])
-                    {
-                        curPos = j;
-                        break;
-                    }
-                }
+                prev[next[cur]] = prev[cur];
             }
-            v[delPos] = false;
-        }
-        else if (str[0] == 'U')
-        {
-
-            int x = stoi(str.substr(2));
-
-            while (x > 0 && curPos > 0)
+            if (next[cur] != -1)
             {
-                curPos--; // 얜 계속 줄여야 false는 skip해야함
-                if (v[curPos])
-                    x--;
+                cur = next[cur];
+            }
+            else
+            {
+                cur = prev[cur];
             }
         }
         else if (str[0] == 'Z')
         {
-            if (!del.empty())
+            int num = deleted.top();
+            deleted.pop();
+            isExist[num] = true;
+            if (prev[num] != -1)
             {
-                int num = del[del.size() - 1];
-                del.pop_back();
-                v[num] = true;
+                next[prev[num]] = num;
+            }
+            if (next[num] != -1)
+            {
+                prev[next[num]] = num;
             }
         }
     }
-    for (int i = 0; i < v.size(); i++)
+    for (int i = 0; i < isExist.size(); i++)
     {
-        if (v[i])
+        if (isExist[i])
         {
             answer += "O";
         }

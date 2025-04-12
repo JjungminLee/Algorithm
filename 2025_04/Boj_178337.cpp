@@ -10,10 +10,10 @@ struct State
 };
 vector<State> v;
 
-int dx[4] = {0, 0, -1, 1}; // →, ←, ↑, ↓
+int dx[4] = {0, 0, -1, 1}; // 0: →, 1: ←, 2: ↑, 3: ↓
 int dy[4] = {1, -1, 0, 0};
-vector<int> boardStacks[13][13]; // vector 사용
-
+vector<int> boardStacks[13][13];
+int curTurn;
 int switchDir(int d)
 {
     if (d == 0)
@@ -25,44 +25,30 @@ int switchDir(int d)
     return 2;
 }
 
-void moveWhite(int r, int c, int nr, int nc, int idx)
+void movePiece(int r, int c, int nr, int nc, int idx, int color)
 {
     auto it = find(boardStacks[r][c].begin(), boardStacks[r][c].end(), idx);
     vector<int> moving(it, boardStacks[r][c].end());
-    boardStacks[r][c].erase(it, boardStacks[r][c].end());
+
+    if (color == 1)
+    {
+        reverse(moving.begin(), moving.end());
+    }
 
     for (int m : moving)
     {
-        v[m].r = nr;
-        v[m].c = nc;
         boardStacks[nr][nc].push_back(m);
-    }
-}
-
-void moveRed(int r, int c, int nr, int nc, int idx)
-{
-    auto it = find(boardStacks[r][c].begin(), boardStacks[r][c].end(), idx);
-    vector<int> moving(it, boardStacks[r][c].end());
-    boardStacks[r][c].erase(it, boardStacks[r][c].end());
-    reverse(moving.begin(), moving.end());
-
-    for (int m : moving)
-        boardStacks[nr][nc].push_back(m); // ✅ 먼저 push해서 쌓이는 순서 보존
-
-    for (int m : moving)
-    {
         v[m].r = nr;
         v[m].c = nc;
     }
-}
 
-bool checkFinish()
-{
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            if (boardStacks[i][j].size() >= 4)
-                return true;
-    return false;
+    if (boardStacks[nr][nc].size() >= 4)
+    {
+        cout << curTurn << '\n';
+        exit(0);
+    }
+
+    boardStacks[r][c].erase(it, boardStacks[r][c].end());
 }
 
 int main()
@@ -83,46 +69,30 @@ int main()
         v.push_back({r - 1, c - 1, d - 1});
     }
 
-    for (int turn = 1; turn <= 1000; turn++)
+    for (curTurn = 1; curTurn <= 1000; curTurn++)
     {
         for (int i = 0; i < k; i++)
         {
             int r = v[i].r, c = v[i].c;
             int d = v[i].d;
-            if (boardStacks[r][c].front() != i)
-                continue;
 
             int nr = r + dx[d], nc = c + dy[d];
 
+            // 파란색 또는 밖이면 방향 전환
             if (nr < 0 || nr >= n || nc < 0 || nc >= n || arr[nr][nc] == 2)
             {
                 d = switchDir(d);
                 v[i].d = d;
                 nr = r + dx[d];
                 nc = c + dy[d];
-
                 if (nr < 0 || nr >= n || nc < 0 || nc >= n || arr[nr][nc] == 2)
                     continue;
             }
 
-            else if (arr[nr][nc] == 0)
-            {
-                moveWhite(r, c, nr, nc, i);
-            }
-
-            else if (arr[nr][nc] == 1)
-            {
-                moveRed(r, c, nr, nc, i);
-            }
-        }
-
-        if (checkFinish())
-        {
-            cout << turn << '\n';
-            return 0;
+            movePiece(r, c, nr, nc, i, arr[nr][nc]);
         }
     }
 
-    cout << -1 << '\n';
+    cout << -1 << "\n";
     return 0;
 }

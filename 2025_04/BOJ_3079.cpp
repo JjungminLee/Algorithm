@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-long long n, m;
+int n;
+long long m;
 vector<long long> v;
 int main()
 {
@@ -11,25 +11,27 @@ int main()
     cin >> n >> m;
     for (int i = 0; i < n; i++)
     {
-        int num;
+        long long num;
         cin >> num;
         v.push_back(num);
     }
     sort(v.begin(), v.end());
-    int left = 0;
-    int mid = 0;
-    int right = m * v[v.size() - 1];
+    long long left = 0;
+
+    long long right = m * v[0];
+
     while (left <= right)
     {
-        int cnt = 0;
+        long long cnt = 0;
 
-        mid = (left + right) / 2;
+        long long mid = (left + right) / 2;
 
         for (int i = 0; i < v.size(); i++)
         {
             cnt += (mid / v[i]);
         }
-        // cout << "mid " << mid << "cnt " << cnt << endl;
+        // cout << "mid " << mid << "cnt " << cnt << "left" << left << "right" << right << endl;
+
         if (cnt >= m)
         {
             right = mid - 1;
@@ -38,10 +40,6 @@ int main()
         {
             left = mid + 1;
         }
-        else if (cnt == m)
-        {
-            break;
-        }
     }
-    cout << mid << endl;
+    cout << left << endl;
 }

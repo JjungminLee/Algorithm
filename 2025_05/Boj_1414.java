@@ -5,9 +5,6 @@ import java.io.*;
 import java.util.*;
 import java.util.List;
 
-/*
-* 자식 노드에게 전파하는 depth가 더 적은 순서대로 전파하면 됨
-* */
 public class Main {
 
 	static int n;

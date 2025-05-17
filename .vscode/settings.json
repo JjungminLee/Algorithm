@@ -75,6 +75,7 @@
     "typeindex": "cpp",
     "unordered_set": "cpp",
     "valarray": "cpp",
-    "execution": "cpp"
+    "execution": "cpp",
+    "print": "cpp"
   }
 }

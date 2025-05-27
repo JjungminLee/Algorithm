@@ -26,26 +26,23 @@ int main(){
     visited[1][1]=true;
     light[1][1]=true;
 
-    // 인접한 애들만 스위치로 켤수 있음
     while(!q.empty()){
         int curx = q.front().first;
         int cury = q.front().second;
         q.pop();
-
+        // 스위치 누르기
         for (auto [a, b] : arr[curx][cury]) {
             if (!light[a][b]) {
                 light[a][b] = true;
-
+                //a,b 인접한곳에 방문한게 있으면 a,b도 큐에 넣기 (어차피 얘도 방문하게 될거기 때문에)
                 for(int i=0;i<4;i++){
                     int nx = a+dx[i];
                     int ny = b+dy[i];
-
-                    // 이동은 상하좌우 인접, 방문은 했는데 스위치는 안켜진
                     if(nx>=1&&nx<=n&&ny>=1&&ny<=n){
                         if(visited[nx][ny]){
                             visited[a][b]=true;
                             q.push({a,b});
-                           
+                            break;
                             
                         }
 
@@ -53,9 +50,20 @@ int main(){
                 }
             }
         }
-   
-        
 
+        // 이동하기 (인접하고, 불켜진 방ㅇ으로만)
+        for(int i=0;i<4;i++){
+            int nx = curx+dx[i];
+            int ny = cury+dy[i];
+            if(nx>=1&&nx<=n&&ny>=1&&ny<=n){
+                if(!visited[nx][ny]&&light[nx][ny]){
+                    visited[nx][ny]=true;
+                    q.push({nx,ny});
+                }
+            }
+        }
+
+   
     }
 
     
@@ -67,6 +75,7 @@ int main(){
 
             }
         }
+
     }
 
     cout<<answer<<endl;

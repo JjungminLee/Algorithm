@@ -18,17 +18,14 @@ int main(){
     for(int i=0;i<n-2;i++){
         int left=i+1;
         int right = n-1;
-        // 세개 뽑아서 합이 0
         while(left<right){
             int sum = v[i]+v[left]+v[right];
             if(sum==0){
-                // left와 right 값이 같은 경우
                 if(v[left]==v[right]){
                     int cnt = right-left+1;
                     ans+=(cnt*(cnt-1))/2;
-                    break;
+                    break;;
                 }
-                // left와 right값이 다른데 그 사이에 중복이 있는 경우
                 int cntL=1;
                 int cntR=1;
                 while(left+1<right&&v[left]==v[left+1]){
@@ -39,16 +36,15 @@ int main(){
                     cntR++;
                     right--;
                 }
-                ans+=(cntL*cntR);
-                // 중복 넘어가기 안하면 무한루프
+                ans+=cntL*cntR;
                 left++;
                 right--;
+
             }else if(sum<0){
                 left++;
             }else{
                 right--;
             }
-
         }
     }
     cout<<ans<<endl;

@@ -34,6 +34,7 @@ int main(){
     // ab + cd 가 0이 되는
 
     long long res=0;
+    // left는 ab 배열만 사용, right 는 cd배열만 사용
     int left = 0;
     int right = n*n-1;
     while(left<ab.size()&&right>=0){

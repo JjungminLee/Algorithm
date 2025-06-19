@@ -29,7 +29,7 @@ int main(){
             for(int j=0;j<m;j++){
                 //가로면 0 세로면 1
                 // (i,j) 값과 현재 값이 0인지 1인지
-                int bit = num&(1<<(i*m+j));
+                int bit = (num>>(i*m+j))&1;
                 if(bit==0){
                     // 현재 위취가 가로로 잘리면 누적
                     val=10*val+arr[i][j];
@@ -43,11 +43,12 @@ int main(){
             // 중요! 마지막 가로숫자 더하기
             sum+=val;
         }
+
         //세로
         for(int j=0;j<m;j++){
             int val=0;
             for(int i=0;i<n;i++){
-                int bit = num&(1<<(i*m+j));
+                int bit = (num>>(i*m+j))&1;
                 if(bit==1){
                     // 세로로 잘리면 누적
                     val=10*val+arr[i][j];

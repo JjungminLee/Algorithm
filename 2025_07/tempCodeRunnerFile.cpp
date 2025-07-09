@@ -1,1 +1,1 @@
-    cout<<"idx "<<idx<<endl;
+cout<<"lcnt "<<lcnt<<endl;

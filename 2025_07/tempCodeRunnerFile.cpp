@@ -1,1 +1,1 @@
-cout<<"lcnt "<<lcnt<<endl;
+        cout<<*it<<endl;

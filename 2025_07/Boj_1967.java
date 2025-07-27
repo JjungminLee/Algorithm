@@ -57,7 +57,6 @@ public class Main {
 
 		// dfs로 1번에서 가장 먼곳 찾기
 		dfs(1,-1,0);
-		ans+=maxDist;
 		maxDist=0;
 		visited = new boolean[n + 1];
 		// 가장 먼곳에서 그 지점에서 제일 먼 곳 찾기

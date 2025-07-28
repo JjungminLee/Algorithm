@@ -7,7 +7,7 @@ vector<int>v;
 int main(){
     priority_queue<pair<int,int>>pqScore;
     cin>>n;
-    v=vector<int>(n+1);
+    v=vector<int>(1001);
     for(int i=0;i<n;i++){
         int a,b;
         cin>>a>>b;
@@ -27,7 +27,7 @@ int main(){
         
     }
 
-    for(int i=1;i<=n;i++){
+    for(int i=1;i<=1000;i++){
         ans+=v[i];
     }
 

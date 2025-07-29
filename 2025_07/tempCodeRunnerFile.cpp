@@ -1,36 +1,37 @@
 #include<bits/stdc++.h>
 using namespace std;
+vector<pair<int,int>>v;
 
-int n;
-int ans;
-vector<int>v;
+struct Compare {
+    bool operator()(pair<int,int> a, pair<int,int> b) {
+        return a.second > b.second; // 끝나는 시간이 빠른 순 (오름차순)
+    }
+};
+
 int main(){
-    priority_queue<pair<int,int>>pqScore;
+    int n;
+    int ans=0;
     cin>>n;
-    v=vector<int>(n+1);
+    priority_queue<pair<int,int>, vector<pair<int,int>>, Compare> pq;
     for(int i=0;i<n;i++){
-        int a,b;
-        cin>>a>>b;
-        pqScore.push({b,a});
-    }
-    while(!pqScore.empty()){
-        auto curScore = pqScore.top();
-      
-        pqScore.pop();
-
-            for(int i=curScore.second;i>=1;i--){
-                if(v[i]==0){
-                    v[i]=curScore.first;
-                    break;
-                }
-            }
-        
+        int s,t;
+        cin>>s>>t;
+        pq.push({s,t});
     }
 
-    for(int i=1;i<=n;i++){
-        ans+=v[i];
-    }
+    auto cur = pq.top();
+    pq.pop();
+    ans++;
 
+    while(!pq.empty()){
+        auto next = pq.top();
+        pq.pop();
+        if(next.first>=cur.second){
+           
+            cur=next;
+            ans++;
+        }
+
+    }
     cout<<ans<<endl;
-    
 }

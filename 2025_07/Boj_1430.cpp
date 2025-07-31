@@ -24,7 +24,7 @@ int main(){
     for(int i=0;i<n;i++){
         int a,b;
         cin>>a>>b;
-        v.push_back({a,b,d});
+        v.push_back({a,b,0});
     }
 
     queue<Node>q;
@@ -36,12 +36,9 @@ int main(){
         }
     }
 
-    double ans=0;
-
     while(!q.empty()){
         Node cur = q.front();
         q.pop();
-        ans=max(ans,cur.power);
 
         for(int i=0;i<n;i++){
             if(calcDist(cur.x,cur.y,v[i].x,v[i].y)){

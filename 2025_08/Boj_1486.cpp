@@ -12,8 +12,8 @@ struct Node{
     int x,y;
 };
 
-long long go[26][26]; // 갈 때 시간
-long long back[26][26]; // 올 때 시간
+int go[26][26]; // 갈 때 시간
+int back[26][26]; // 올 때 시간
 
 
 int getHeight(char c){
@@ -26,7 +26,7 @@ int getHeight(char c){
 }
 
 
-void dijkstra(int sx,int sy,long long dist[26][26],bool isDown){
+void dijkstra(int sx,int sy,int dist[26][26],bool isDown){
     priority_queue<tuple<long long,int,int>,vector<tuple<long long,int,int>>,greater<>> pq;
     for(int i=0;i<n;i++){
         for(int j=0;j<m;j++){
@@ -46,9 +46,9 @@ void dijkstra(int sx,int sy,long long dist[26][26],bool isDown){
                 int diff = arr[nx][ny] - arr[curx][cury];
                 int cost;
                 if(isDown){
-                    cost = diff <= 0 ? 1 : diff * diff;
+                    cost = diff>=0?1:diff*diff;
                 }else{
-                    cost = diff>=0?diff*diff:1;
+                    cost = diff>0?diff*diff:1;
                 }
                 int newTime = curTime + cost;
                 if(dist[nx][ny]>newTime){
@@ -69,9 +69,9 @@ int main(){
             arr[i][j]=getHeight(str[j]);
         }
     }
-    dijkstra(0,0,go,false);
+    dijkstra(0,0,go,true);
 
-    dijkstra(0,0,back,true);
+    dijkstra(0,0,back,false);
 
     int result=0;
     for(int i=0;i<n;i++){

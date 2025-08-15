@@ -21,7 +21,7 @@ int getHeight(char c){
 void dijkstra(int sx,int sy,int dist[26][26],bool isDown){
     for(int i=0;i<26;i++){
         for(int j=0;j<26;j++){
-            dist[i][j]=1e18;
+            dist[i][j]=1e9;
         }
     }
     priority_queue<tuple<long long,int,int>,vector<tuple<long long,int,int>>,greater<>>pq;

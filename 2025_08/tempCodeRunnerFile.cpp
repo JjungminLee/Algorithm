@@ -1,2 +1,2 @@
-    cin.tie(NULL);
-    cout.tie(NULL);
+
+        int curr,curc;

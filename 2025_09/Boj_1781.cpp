@@ -30,10 +30,11 @@ int main(){
     priority_queue<long long,vector<long long>,greater<long long>>pq;
 
     for(int i=0;i<N;i++){
+        // 일단 넣고
         pq.push(v[i].cnt);
-        // 현재 턴에서 컵라면을 받았을때 데드라인 보다 더 크다면 안됨
+        // 데드라인 초과하면
         if(v[i].deadline<pq.size()){
-            pq.pop();
+            pq.pop(); // 컵라면 하나 버림
         }
     }
 

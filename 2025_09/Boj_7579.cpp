@@ -4,12 +4,12 @@ using namespace std;
 #define MAX_SIZE 10000001
 int N,M;
 int arr[200];
-long long c[200];
-long long dp[MAX_SIZE];
+int c[200];
+int dp[MAX_SIZE];
 int main(){
 
     cin>>N>>M;
-    long long sumMem = 0;
+    int sumMem = 0;
     for(int i=0;i<N;i++){
         cin>>arr[i];
         sumMem+=arr[i];
@@ -20,7 +20,7 @@ int main(){
     }
     
     for(int i=0;i<=sumMem;i++){
-        dp[i]=1e10;
+        dp[i]=MAX_SIZE;
     }
     dp[0]=0;
  
@@ -32,7 +32,7 @@ int main(){
         }
 
     }
-    long long memAns = 1e10;
+    int memAns = MAX_SIZE;
     for(int i=M;i<=sumMem;i++){
         memAns=min(dp[i],memAns);
     }

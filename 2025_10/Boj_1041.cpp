@@ -58,7 +58,7 @@ int main(){
 
                 for(auto p:opp){
                     // 서로 마주보는 쌍이 포함되면 안됨!
-                    int cnt = (p.first==i) + (p.first==j) + (p.first==k)
+                    long long cnt = (p.first==i) + (p.first==j) + (p.first==k)
                     + (p.second==i)+(p.second==j)+(p.second==k);
                     if(cnt>=2) valid=false;
                 }
@@ -75,7 +75,7 @@ int main(){
 
     long long ans = 0;
     ans += 4*three;
-    ans +=( 8*(N-2) + 4*(N-1))*two;
+    ans +=( 8*N-12)*two;
     ans += (N-2)*(5*N-6)*one;
     cout<<ans<<"\n";
 

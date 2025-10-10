@@ -32,7 +32,7 @@ void backTracking(int idx,int cnt){
     // 가로선 추가 
     // 1. 두 가로선 연속 x
     // 2. 접하면 x
-    if(cnt>answer){
+    if(cnt>=answer){
         return;
     }
 
@@ -45,9 +45,10 @@ void backTracking(int idx,int cnt){
     for(int r= idx;r<=H;r++){
         for(int c=1;c<N;c++){
             if(ladder[r][c]) continue;
-            if(ladder[r][c-1]||ladder[r][c+1]) continue;
+            if(c<N-1&&(ladder[r][c-1]||ladder[r][c+1])) continue;
             ladder[r][c]=true;
-            backTracking(r+1,cnt+1);
+            // r+1이 아닌 이유! -> 같은 행이여도 떨어지는 경우 발생하기 때문에 r을 넣어야!
+            backTracking(r,cnt+1);
             ladder[r][c]=false;
         }
     }

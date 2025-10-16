@@ -20,17 +20,15 @@ int findLen(int x,int y){
     for(int i=0;i<4;i++){
         int nx = x+dx[i];
         int ny = y+dy[i];
-        while(nx>=0&&nx<N&&ny>=0&&ny<M){
-            if(maps[nx][ny]=='*'){
-                tmp[i]++;
-            }
+        while(nx>=0&&nx<N&&ny>=0&&ny<M&&maps[nx][ny]=='*'){
+            tmp[i]++;
             nx+=dx[i];
             ny+=dy[i];
         }
     }
-    int minLen=INT_MAX;
+    int minLen=tmp[0];
 
-    for(int i=0;i<4;i++){
+    for(int i=1;i<4;i++){
         minLen=min(tmp[i],minLen);
     }
 
@@ -38,27 +36,7 @@ int findLen(int x,int y){
 }
 
 bool findValid(int x,int y){
-   vector<int>tmp(4);
-    
-    for(int i=0;i<4;i++){
-        int nx = x+dx[i];
-        int ny = y+dy[i];
-        while(nx>=0&&nx<N&&ny>=0&&ny<M&&maps[nx][ny]!='*'){
-            tmp[i]++;
-            nx+=dx[i];
-            ny+=dy[i];
-        }
-    }
-
-    int std = tmp[0];
-
-    for(int i=1;i<4;i++){
-        if(std!=tmp[i]){
-            return false;
-        }
-    }
-
-    return true;
+   return findLen(x,y)>=1;
 }
 
 
@@ -70,12 +48,30 @@ int main(){
         }
     }
 
+    int marked[105][105]={0,};
+
     for(int i=1;i<N-1;i++){
         for(int j=1;j<M-1;j++){
             if(maps[i][j]=='*'){
                 int len = findLen(i,j);
-                if(len==INT_MAX||len==0) continue;
+                if(len<=0) continue;
                 v.push_back({i+1,j+1,len});
+                marked[i][j]=1;
+                for(int k=1;k<=len;k++){
+                    marked[i-k][j]=1;
+                    marked[i+k][j]=1;
+                    marked[i][j-k]=1;
+                    marked[i][j+k]=1;
+                }
+            }
+        }
+    }
+
+    for(int i=0;i<N;i++){
+        for(int j=0;j<M;j++){
+            if(maps[i][j]=='*'&&!marked[i][j]){
+                cout<<-1<<"\n";
+                return 0;
             }
         }
     }
@@ -86,30 +82,24 @@ int main(){
     }
 
     if(v.size()==1){
-        if(!findValid(v[0].x,v[0].y)){
+        if(!findValid(v[0].x-1,v[0].y-1)){
             cout<<-1<<"\n";
             return 0;
         }
     }
-    
-    int size = 0;
-    
 
-    for(int i=0;i<v.size();i++){
-        for(int j=1;j<=v[i].len;j++){
-            size++;
-        }
+    int size = 0;
+    for(Node item:v){
+        size+=item.len;
     }
 
     cout<<size<<"\n";
 
-    for(int i=0;i<v.size();i++){
-        for(int j=1;j<=v[i].len;j++){
-            
-            cout<<v[i].x<<" "<<v[i].y<<" "<<j<<"\n";
+    for(Node item:v){
+        for(int s=1;s<=item.len;s++){
+            cout<<item.x<<" "<<item.y<<" "<<s<<"\n";
         }
     }
-
 
 
 }

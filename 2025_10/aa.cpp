@@ -70,8 +70,8 @@ int main(){
         }
     }
 
-    for(int i=1;i<N-1;i++){
-        for(int j=1;j<M-1;j++){
+    for(int i=0;i<N;i++){
+        for(int j=0;j<M;j++){
             if(maps[i][j]=='*'){
                 int len = findLen(i,j);
                 if(len==INT_MAX||len==0) continue;

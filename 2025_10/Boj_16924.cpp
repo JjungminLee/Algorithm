@@ -35,10 +35,6 @@ int findLen(int x,int y){
     return minLen;
 }
 
-bool findValid(int x,int y){
-   return findLen(x,y)>=1;
-}
-
 
 int main(){
     cin>>N>>M;
@@ -79,13 +75,6 @@ int main(){
     if(v.size()==0){
         cout<<-1<<"\n";
         return 0;
-    }
-
-    if(v.size()==1){
-        if(!findValid(v[0].x-1,v[0].y-1)){
-            cout<<-1<<"\n";
-            return 0;
-        }
     }
 
     int size = 0;

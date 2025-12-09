@@ -10,7 +10,7 @@ int countNum(string a){
         if(a[i]>='A'&&a[i]<='Z') continue;
         int num = a[i]-'0';
         if(num>=0&&num<=9){
-            cur++;
+            cur+=num;
         }
     }
     return cur;
@@ -24,8 +24,10 @@ bool comparators(string a,string b){
             for(int i=0;i<a.size();i++){
                 int anum = a[i]-'0';
                 int bnum = b[i]-'0';
+
                 if(0<=anum&&anum<=9){
                     if(0<=bnum&&bnum<=9){
+                        if(bnum==anum) continue;
                         return anum < bnum;
                     }else{
                         // a가 숫자, b가 문자
@@ -37,6 +39,7 @@ bool comparators(string a,string b){
                         return false;
                     }else{
                         // a가 문자 b가 문자
+                        if(a[i]==b[i]) continue;
                         return a[i]<b[i];
                     }
                 }

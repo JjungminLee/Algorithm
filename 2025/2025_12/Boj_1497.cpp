@@ -44,7 +44,7 @@ int main(){
         string str;
         string bitStr;
         cin>>str>>bitStr;
-        long long bit = 0;
+        long long bit = 0L;
         for(int i=0;i<m;i++){
             bit<<=1; // 비트를 왼쪽으로 한칸 밀기
             if(bitStr[i]=='Y'){

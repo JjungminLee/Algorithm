@@ -17,20 +17,15 @@ int main(){
 
     for(int i=0;i<n&&s>0;i++){
         int best = i;
-
-        // 인접한 것과 교환 가능
         for(int j=i+1;j<n&&j<=i+s;j++){
-            if(a[j]>a[best]) best=j;
+            if(a[best]<a[j]) best=j;
         }
 
-        // 바로 옆 인접한 것과 스왑
         for(int j=best;j>i;j--){
             swap(a[j],a[j-1]);
         }
-
         s-=(best-i);
     }
-   
 
     for(int i=0;i<n;i++){
         cout<<a[i]<<" ";

@@ -18,19 +18,21 @@ int main(){
     sort(v.begin(),v.end());
     
     for(int i=0;i<n;i++){
-
         long long target = v[i];
-        int l =0;
-        int r = n-1;
+
+        int l=0;
+        int r=n-1;
 
         while(l<r){
             if(l==i){
                 l++;
                 continue;
-            }else if(r==i){
+            }
+            if(r==i){
                 r--;
                 continue;
             }
+
             long long sum = v[l]+v[r];
             if(sum==target){
                 ans++;
@@ -42,7 +44,6 @@ int main(){
             }
         }
     }
-
     cout<<ans<<"\n";
     
 }
